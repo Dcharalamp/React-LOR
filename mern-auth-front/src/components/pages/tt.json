@@ -1,0 +1,343 @@
+{
+    "rdf:RDF": {
+        "$": {
+            "xml:base": "http://lom.hpclab.ceid.upatras.gr",
+            "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "xmlns:xsd": "http://www.w3.org/2001/XMLSchema#",
+            "xmlns:skos": "http://www.w3.org/2004/02/skos/core#",
+            "xmlns:owl": "http://www.w3.org/2002/07/owl#",
+            "xmlns:rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "xmlns": "http://lom.hpclab.ceid.upatras.gr/",
+            "xmlns:lom": "http://ltsc.ieee.org/xsd/LOM/"
+        },
+        "owl:Ontology": [
+            {
+                "$": {
+                    "rdf:about": ""
+                }
+            }
+        ],
+        "owl:NamedIndividual": [
+            {
+                "$": {
+                    "rdf:ID": "N65544"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://sumanasinc.com/webcontent/animations/content/influenza.html",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Influenza Virus Entry into a Cell"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>This narrated animation describes how Influenza A is transmitted from person to person, what it is composed of, and how it successfully enters and infects a cell. </p>"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65551"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://www.howstuffworks.com/virus2.htm/printable",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "How Computer Viruses Work"
+                ],
+                "lom:description": [
+                    "(MERLOT) This site gives a great explanation on computer viruses and infestations, types of infections, an explanation of how they spread, and prevention methods."
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65558"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://www.dnaftb.org/dnaftb/25/concept/index.html",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "RNA Viruses"
+                ],
+                "lom:description": [
+                    "(MERLOT) This is a module from the Supersite, \"DNA From the Beginning.\"  This learning shows how some viruses store genetic information in the form of RNA rather than DNA.  The Supersite contains many other animated tutorials on DNA, genes and heredity. The science behind each concept is explained using animations, an image gallery, video interviews, problems, biographies, and links. There are three sections for the Supersite including Classical Genetics, Molecules of Genetics, and Organization of Genetic Material. Key features are the clear explanations of classical experiments and excellent photographs of researchers and their labs."
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65565"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://hdl.handle.net/10251/5813",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Virus"
+                ],
+                "lom:description": [
+                    "(MERLOT) Qué es un virus informático. Tipos de virus más frecuentes. Formas de contagio y transmisión. Programas antivirus y recomendaciones elementales"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65572"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://www.bath.ac.uk/bio-sci/oer/index/view/id/17",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Oncogenic Viruses"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>The resource is a series of Powerpoint slides on how cancer can be triggered by viruses capable of transforming normal cells into oncogenic cells capable of excessive proliferation. It gives an overview of viral replication in host cells and uses examples of the Human Pappilloma Virus (HPV) and Epstein-Barr Virus (EBV) and their role in the development of carcinomas.</p><p>The presentation is created by Dr. Momna Hejmadi as part of her cancer biology course to first and second year undergraduates in the biosciences.This source file can be adapted for educational and non-commercial purposes only as licensed under the Creative Commons licence.</p>"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65579"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "https://www.hhmi.org/biointeractive/virus-explorer",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Virus Explorer | HHMI BioInteractive"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>This interactive incorporates engaging 3D-models of viruses that students can click on to rotate and view from different angles. In the process they will learn about the criteria that scientists use to classify viruses, the characteristics of different viruses, and the global prevalence of viral infections. A link to an illustration of the relative sizes of viruses provides an opportunity to discuss scale and units.</p>\n<p>An accompanying PDF worksheet is provided for students to complete as they go through the Click and Learn.</p>"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65586"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://www.cknow.com/cms/vtutor/cknow-virus-tutorial.html",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Computer Knowledge Virus Tutorial"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>This is a tutorial on computer viruses. It discusses what a computer virus is, gives history, discusses protection from viruses, and mentions some of the characteristics of a virus hoax.</p>"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65593"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://online.x-plain.com/modules_v3/m3.asp?s=i&AI=OTI2OTA2N…eSBTeXN0ZW0=&b=X1dlc3RM&IDN=X1dlc3RM&SE=eWVz&SQ=bm8=&MM=cA==",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Zika Virus"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>This tutorial provides an introduction and includes information such as symptoms, causes, diagnosis, treatment, and prevention of the Zika Virus.</p>"
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65600"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "http://www.cknow.com/cms/vtutor/cknow-virus-tutorial.html",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Computer Knowledge Virus Tutorial"
+                ],
+                "lom:description": [
+                    "(MERLOT) This is a tutorial on computer viruses. It discusses what computer viruses are, gives some history, and discusses protection from viruses. A listing of anti-virus software vendors is also available."
+                ]
+            },
+            {
+                "$": {
+                    "rdf:ID": "N65607"
+                },
+                "lom:keyword": [
+                    {
+                        "_": "viruses",
+                        "$": {
+                            "xml:lang": "en"
+                        }
+                    },
+                    {
+                        "$": {
+                            "rdf:resource": "http://www.nlm.nih.gov/mesh/2006#D014780"
+                        }
+                    }
+                ],
+                "lom:identifier": [
+                    {
+                        "_": "https://www.ncbi.nlm.nih.gov/books/NBK21523",
+                        "$": {
+                            "rdf:datatype": "xsd:anyURI"
+                        }
+                    }
+                ],
+                "lom:title": [
+                    "Viruses: Structure, Function, and Uses - Molecular Cell Biology - NCBI Bookshelf"
+                ],
+                "lom:description": [
+                    "(MERLOT) <p>This site is an overview on viruses. The user will explore a viruses function, struture, and use.</p>"
+                ]
+            }
+        ]
+    }
+}

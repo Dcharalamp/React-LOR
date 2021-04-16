@@ -1,0 +1,963 @@
+{
+    "@context" : {
+      "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+      "xsd" : "http://www.w3.org/2001/XMLSchema#",
+      "owl" : "http://www.w3.org/2002/07/owl#",
+      "rdf:first" : {
+        "@type" : "@id"
+      },
+      "rdf:type" : {
+        "@type" : "@id"
+      },
+      "rdf:rest" : {
+        "@type" : "@id"
+      },
+      "rdf:subject" : {
+        "@type" : "@id"
+      },
+      "rdf:value" : {
+        "@type" : "@id"
+      },
+      "rdf:predicate" : {
+        "@type" : "@id"
+      },
+      "rdf:object" : {
+        "@type" : "@id"
+      },
+      "rdfs:subClassOf" : {
+        "@type" : "@id"
+      },
+      "rdfs:domain" : {
+        "@type" : "@id"
+      },
+      "rdfs:subPropertyOf" : {
+        "@type" : "@id"
+      },
+      "rdfs:seeAlso" : {
+        "@type" : "@id"
+      },
+      "rdfs:range" : {
+        "@type" : "@id"
+      },
+      "rdfs:member" : {
+        "@type" : "@id"
+      },
+      "owl:minCardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:qualifiedCardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:annotatedTarget" : {
+        "@type" : "@id"
+      },
+      "owl:seeAlso" : {
+        "@type" : "@id"
+      },
+      "owl:cardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:hasSelf" : {
+        "@type" : "@id"
+      },
+      "owl:onDatatype" : {
+        "@type" : "@id"
+      },
+      "owl:onDataRange" : {
+        "@type" : "@id"
+      },
+      "owl:differentFrom" : {
+        "@type" : "@id"
+      },
+      "owl:someValuesFrom" : {
+        "@type" : "@id"
+      },
+      "owl:disjointUnionOf" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:versionIRI" : {
+        "@type" : "@id"
+      },
+      "owl:allValuesFrom" : {
+        "@type" : "@id"
+      },
+      "owl:inverseOf" : {
+        "@type" : "@id"
+      },
+      "owl:onProperty" : {
+        "@type" : "@id"
+      },
+      "owl:priorVersion" : {
+        "@type" : "@id"
+      },
+      "owl:complementOf" : {
+        "@type" : "@id"
+      },
+      "owl:disjointWith" : {
+        "@type" : "@id"
+      },
+      "owl:unionOf" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:maxCardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:withRestrictions" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:bottomDataProperty" : {
+        "@type" : "rdfs:Literal"
+      },
+      "owl:propertyChainAxiom" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:sameAs" : {
+        "@type" : "@id"
+      },
+      "owl:equivalentClass" : {
+        "@type" : "@id"
+      },
+      "owl:equivalentProperty" : {
+        "@type" : "@id"
+      },
+      "owl:members" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:incompatibleWith" : {
+        "@type" : "@id"
+      },
+      "owl:intersectionOf" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:distinctMembers" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:sourceIndividual" : {
+        "@type" : "@id"
+      },
+      "owl:bottomObjectProperty" : {
+        "@type" : "@id"
+      },
+      "owl:topObjectProperty" : {
+        "@type" : "@id"
+      },
+      "owl:hasKey" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:annotatedSource" : {
+        "@type" : "@id"
+      },
+      "owl:onClass" : {
+        "@type" : "@id"
+      },
+      "owl:onProperties" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:targetIndividual" : {
+        "@type" : "@id"
+      },
+      "owl:assertionProperty" : {
+        "@type" : "@id"
+      },
+      "owl:maxQualifiedCardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:datatypeComplementOf" : {
+        "@type" : "@id"
+      },
+      "owl:backwardCompatibleWith" : {
+        "@type" : "@id"
+      },
+      "owl:oneOf" : {
+        "@type" : "@id",
+        "@container" : "@list"
+      },
+      "owl:targetValue" : {
+        "@type" : "rdfs:Literal"
+      },
+      "owl:propertyDisjointWith" : {
+        "@type" : "@id"
+      },
+      "owl:imports" : {
+        "@type" : "@id"
+      },
+      "owl:annotatedProperty" : {
+        "@type" : "@id"
+      },
+      "owl:minQualifiedCardinality" : {
+        "@type" : "xsd:nonNegativeInteger"
+      },
+      "owl:topDataProperty" : {
+        "@type" : "rdfs:Literal"
+      }
+    },
+    "@graph" : [ {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr",
+      "@type" : "owl:Ontology"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65544",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Virus inactivation is one of the most important factors that controls virus fate and transport in the\nsubsurface. In this study the inactivation of viruses in the presence of quartz sand was examined. The bacteriophages\nMS2 and X174 were used as model viruses. Experiments were performed at 4 ◦C and 20 ◦C,\nunder constant controlled conditions, to investigate the effect of virus type, temperature, sand size, and\ninitial virus concentration on virus inactivation. The experimental virus inactivation data were satisfactorily\nrepresented by a pseudo-first order expression with time-dependent rate coefficients. Furthermore,\nthe results indicated that virus inactivation was substantially affected by the ambient temperature and\ninitial virus concentration. The inactivation rate of MS2 was shown to be greater than that of X174.\nHowever, the greatest inactivation was observed for MS2 without the presence of sand, at 20 ◦C. Sand\nsurfaces offered protection against inactivation especially under static conditions. However, no obvious\nrelationship between sand particle size and virus inactivation could be established from the experimental\ndata. Moreover, the inactivation rates were shown to increase with decreasing virus concentration",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://purl.tuc.gr/dl/dias/C68C7E26-08BA-420E-B83B-478400185CA110.1016/j.jhazmat.2012.07.002"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Virus inactivation in the presence of quartz sand under static and dynamic batch conditions at different temperatures"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65551",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) null",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/19336896.2019.1710420"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "25 years of yeast prions."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65558",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) To better evaluate HIV-1 vaccines and therapeutics, the National Institutes for Food and Drug Control of China developed a panel of HIV-1 pseudoviruses including 462 viral strains derived from China, covering the majority of contemporaneous subtypes and circulating recombinant forms. Compared with the standard pseudovirus panels derived from other countries/regions, the Chinese isolates are more susceptible to neutralization by the sera obtained in China, revealing the strain/subtype specificity. Some of these pseudoviruses have already been used for the evaluation of HIV vaccines and drug candidates in Chinese clinical trials. The pseudoviruses panel is widely shared with interested scientists involved in the research and development of vaccines and antiviral drugs against HIV-1 strains prevalent in China.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2019.1702479"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "HIV-1 pseudoviruses constructed in China regulatory laboratory."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65565",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) <p>This unit is part of the WQM216 Biological / Bacteriological Water Quality Analyses course of the Red Rocks Community College Water Quality Management Certificate Program, and covers Bacteria and Viruses.</p>",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://contentbuilder.merlot.org/toolkit/users/rrcc/wqm216-06"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "WQM216 Unit 6 Bacteria and Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65572",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) The purposes of the study were to assess the usefulness of simultaneously amplifying herpes simplex virus 1 and 2, varicella-zoster virus, cytomegalovirus, Epstein-Barr virus and human herpesvirus 6 DNA in various clinical specimens and to analyze clinical events in patients presenting positive results. A total of 763 clinical samples obtained from 758 patients, including 115 cerebrospinal fluids, 102 aqueous fluids, 445 swabs from genital (152), oro-facial (138) and other (155) skin lesions, 96 eye swabs and 5 bronchoalveolar lavages, were tested by using the Consensus polymerase chain reaction methodology. The clinical files of the patients were consulted retrospectively. 171 of the 758 patients (22.5%) were positive for at least one of the six target viruses: herpes simplex virus 1 (n = 95), varicella-zoster virus (n = 40), herpes simplex virus 2 (n = 21), herpes simplex virus 1 plus herpes simplex virus 2 (n = 8), cytomegalovirus (n = 4), Epstein-Barr virus (n = 1), human herpesvirus 6 (n = 1), and herpes simplex virus 1 plus human herpesvirus 6 (n = 1). The Consensus methodology enabled the rapid and accurate detection of herpesviruses in various clinical specimens and provided a reliable tool in the diagnosis of herpetic infections.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/18743"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Usefulness of Herpes Consensus PCR methodology to routine diagnostic testing for herpesviruses infections in clinical specimens"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65579",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) A model for virus transport in one-dimensional, homogeneous, saturated\nporous media is developed, accounting for virus sorption and inactivation of liquid phase\nand adsorbed viruses with different time dependent rate coefficients. The virus inactivation\nprocess is represented by a pseudo first-order rate expression. The pseudo first-order\napproximation is shown to simulate available experimental data from three virus\ninactivation batch studies better than the frequently employed constant rate inactivation\nmodel. Model simulations indicated that the pseudo first-order approximation, compared\nto the constant inactivation, leads to extended survival of viruses and, consequently, more\ndistant migration. Results from a parameter sensitivity analysis demonstrated that\nestimation of pseudo first-order inactivation rate coefficients from field observations\nrequires data collection near the source of virus contamination during initial stages of\nvirus transport.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://purl.tuc.gr/dl/dias/6DBD0025-8BE5-4818-BBAA-6DF29F0B540610.1029/96WR01496"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "One-dimensional virus transport in porous media with time-dependent inactivation rate coefficients"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65586",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Between June 2017 and August 2018, several municipalities located in Bahia state (Brazil) reported a large increase in the number of patients presenting with febrile illness similar to that of arboviral infections. Using a combination of portable whole genome sequencing, molecular clock and epidemiological analyses, we revealed the return of the CHIKV-ECSA genotype into Bahia. Our results show local persistence of lineages in some municipalities and the re-introduction of new epidemiological strains from different Brazilian regions, highlighting a complex dynamic of transmission between epidemic seasons and sampled locations. Estimated climate-driven transmission potential of CHIKV remained at similar levels throughout the years, such that large reductions in the total number of confirmed cases suggests a slow, but gradual accumulation of herd-immunity over the 4 years of the epidemic in Bahia after its introduction in 2014. Bahia remains a reservoir of the genetic diversity of CHIKV in the Americas, and genomic surveillance strategies are essential to assist in monitoring and understanding arboviral transmission and persistence both locally and over large distances.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2019.1701954"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Return of the founder Chikungunya virus to its place of introduction into Brazil is revealed by genomic characterization of exanthematic disease cases."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65593",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) <p>This site is an overview on viruses. The user will explore a viruses function, struture, and use.</p>",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://www.ncbi.nlm.nih.gov/books/NBK21523"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Viruses: Structure, Function, and Uses - Molecular Cell Biology - NCBI Bookshelf"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65600",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) null",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2020.1733440"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "No credible evidence supporting claims of the laboratory engineering of SARS-CoV-2."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65607",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) <p>This site presents the historical developments that led to the determination of the structure and biological functions of viruses and their macromolecular components. It contains personal accounts by several of the scientists who made important contributions to the field.</p>",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://virologyhistory.wustl.edu/128.252.171.12/virology"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Viruses from Structure to Biology"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65628",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) null",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://ktisis.cut.ac.cy/handle/10488/988"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Elimination of PPV and PNRSV through thermotherapy and meristem-tip culture in nectarine"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65635",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) This pod was created for the OpenStax College textbook College Biology: Chapter 21 Viruses  ISBN 10: 1938168097 ISBN 13: 978-1-938168-09-3",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://wisewire.com/item/69266a82-fb2e-4dbd-8bd5-a556f49adfda"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "College Biology: Chapter 21 Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65642",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) This is a module from the Supersite, \"DNA From the Beginning.\"  This learning shows how some viruses store genetic information in the form of RNA rather than DNA.  The Supersite contains many other animated tutorials on DNA, genes and heredity. The science behind each concept is explained using animations, an image gallery, video interviews, problems, biographies, and links. There are three sections for the Supersite including Classical Genetics, Molecules of Genetics, and Organization of Genetic Material. Key features are the clear explanations of classical experiments and excellent photographs of researchers and their labs.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://www.dnaftb.org/dnaftb/25/concept/index.html"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "RNA Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65649",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) <p>The resource is a series of Powerpoint slides on how cancer can be triggered by viruses capable of transforming normal cells into oncogenic cells capable of excessive proliferation. It gives an overview of viral replication in host cells and uses examples of the Human Pappilloma Virus (HPV) and Epstein-Barr Virus (EBV) and their role in the development of carcinomas.</p><p>The presentation is created by Dr. Momna Hejmadi as part of her cancer biology course to first and second year undergraduates in the biosciences.This source file can be adapted for educational and non-commercial purposes only as licensed under the Creative Commons licence.</p>",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://www.bath.ac.uk/bio-sci/oer/index/view/id/17"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Oncogenic Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65656",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) With the high pervasiveness of viral diseases, the battle against viruses has never ceased. Here we discuss five cellular processes, namely \"autophagy\", \"programmed cell death\", \"immune response\", \"cell cycle alteration\", and \"lipid metabolic reprogramming\", that considerably guide viral replication after host infection in an orchestrated manner. On viral infection, \"autophagy\" and \"programmed cell death\" are two dynamically synchronized cell survival programs; \"immune response\" is a cell defense program typically suppressed by viruses; \"cell cycle alteration\" and \"lipid metabolic reprogramming\" are two altered cell housekeeping programs tunable in both directions. We emphasize on their functionalities in modulating viral replication, strategies viruses have evolved to tune these processes for their benefit, and how these processes orchestrate and govern cell fate upon viral infection. Understanding how viruses hijack host networks has both academic and industrial values in providing insights toward therapeutic strategy design for viral disease control, offering useful information in applications that aim to use viral vectors to improve human health such as gene therapy, and providing guidelines to maximize viral particle yield for improved vaccine production at a reduced cost.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/21505594.2020.1726594"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Orchestrated efforts on host network hijacking: Processes governing virus replication."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65663",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) This is a module from the Supersite, \"DNA From the Beginning.\" This learning object shows animations of bacteria and viruses to introduce concepts such as conjugation, transduction, and transformation. The Supersite contains many other animated tutorials on DNA, genes and heredity. The science behind each concept is explained using animations, an image gallery, video interviews, problems, biographies, and links. There are three sections for the Supersite including Classical Genetics, Molecules of Genetics, and Organization of Genetic Material. Key features are the clear explanations of classical experiments and excellent photographs of researchers and their labs.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://www.dnaftb.org/dnaftb/18/concept/index.html"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "DNA in Bacteria and Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65684",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Porcine deltacoronavirus (PDCoV) is an emerging swine coronavirus that causes severe diarrhea, resulting in high mortality in neonatal piglets. Despite widespread outbreaks in many countries, no effective PDCoV vaccines are currently available. Here, we generated, for the first time, a full-length infectious cDNA clone of PDCoV. We further manipulated the infectious clone by replacing the NS6 gene with a green fluorescent protein (GFP) to generate rPDCoV-ΔNS6-GFP; likewise, rPDCoV-ΔNS7 was constructed by removing the ATG start codons of the NS7 gene. Growth kinetics studies suggest that rPDCoV-ΔNS7 could replicate similarly to that of the wild-type PDCoV, whereas rPDCoV-ΔNS6-GFP exhibited a substantial reduction of viral titer in vitro and in vivo. Piglets inoculated with rPDCoV-ΔNS7 or wild-type PDCoV showed similar diarrheic scores and pathological injury. In contrast, rPDCoV-ΔNS6-GFP-infected piglets did not show any clinical signs, indicating that the NS6 protein is an important virulence factor of PDCoV and that the NS6-deficient mutant virus might be a promising live-attenuated vaccine candidate. Taken together, the reverse genetics platform described here not only provides more insights into the role of PDCoV accessory proteins in viral replication and pathogenesis, but also allows the development of novel vaccines against PDCoV infection.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2019.1701391"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Genetic manipulation of porcine deltacoronavirus reveals insights into NS6 and NS7 functions: a novel strategy for vaccine design."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65691",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) OBJECTIVE: To evaluate the serological status of hepatitis B virus infection among Greek injecting drug users with chronic hepatitis C virus infection; to correlate hepatitis B virus infection status with the possible time of infection and the principal genotype of hepatitis C virus infection. METHODS: Two hundred and thirty consecutive injecting drug users with chronic hepatitis C virus infection were evaluated for serological markers of hepatitis B virus infection. One hundred and three of them (44.8%) reported intravenous drug use beginning before 1992 (group A) and 127/230 (55.2%) after 1992 (group B). Statistical analysis of data was based on Student's t-test and chi analyses. RESULTS: Eighty-five of 103 patients from group A (82.5%) and 28/127 (22%) from group B had serological markers of previous hepatitis B virus infection (P&lt;0.001). Eleven patients from group A (10.6%) and 78 (61.4%) from group B were seronegative for all hepatitis B virus markers (P&lt;0.001). Only 3.8% (4/103) of group A patients and 16.5% (21/127) of group B had vaccination-induced protective antibody levels (anti-HBs) against hepatitis B (P=0.02). The majority of patients were infected with hepatitis C virus genotype-3 (64.7% from group A vs 56.7% from group B, P=0.42). The percentages of patients infected with genotype-1 were also comparable in both groups (15.5% from group A vs 30.8% from group B, P=0.09). A significantly higher percentage of group A patients were infected with genotype-4 (19.7%) than those in group B (4.9%, P=0.02). CONCLUSION: The serological profile of hepatitis B virus infection among Greek hepatitis C virus-infected injecting drug users is changing. The proportion of successfully vaccinated hepatitis B virus injecting drug users, although significantly higher than the previous decades, is still relatively low. Vaccination policy in this high-risk group for viral hepatitis is urgently needed.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/23184"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Changing serological status and low vaccination-induced protection rates against hepatitis B characterize chronic hepatitis C virus-infected injecting drug users in Greece: need for immunization policy"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65698",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(MERLOT) The cattle-plaque periodically ravaged Europe for centuries. Government sponsored research in UK in the 1860s opened the way for the discovery of viruses",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://post.queensu.ca/~forsdyke/rindpst1.htm"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Rinderpest. A Step towards the Discovery of Viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65705",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) A methodology is developed for estimating\ntemporally variable virus inactivation rate coefficients\nfrom experimental virus inactivation data. The methodology\nconsists of a technique for slope estimation of\nnormalized virus inactivation data in conjunction with\na resampling parameter estimation procedure. The\nslope estimation technique is based on a relatively\nflexible geostatistical method known as universal kriging.\nDrift coefficients are obtained by nonlinear fitting\nof bootstrap samples and the corresponding confidence\nintervals are obtained by bootstrap percentiles. The\nproposed methodology yields more accurate time dependent\nvirus inactivation rate coefficients than those\nestimated by fitting virus inactivation data to a firstorder\ninactivation model. The methodology is successfully\napplied to a set of poliovirus batch inactivation\ndata. Furthermore, the importance of accurate inactivation\nrate coefficient determination on virus transport\nin water saturated porous media is demonstrated with\nmodel simulations",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://purl.tuc.gr/dl/dias/1D12D20F-0909-4549-AAB8-B5C8C5E0641C10.1007/s00477-003-0130-z"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Estimation of time dependent virus inactivation rates by geostatistical and resampling techniques: Application to virus transport in porous media"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65712",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) null",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://hdl.handle.net/10442/hedi/13146"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Μελέτη σπορομεταδιδόμενων ιών των χορτοδοτικών ψυχανθών vicia sativa και lathyrus cicera"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65747",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) The H7N9 influenza virus has been circulating in China for more than six years. The neuraminidase (NA) has gained great concern for the development of antiviral drugs, therapeutic antibodies, and new vaccines. In this study, we screened seven mouse monoclonal antibodies (mAbs) and compared their protective effects against H7N9 influenza virus. The epitope mapping from escape mutants showed that all the seven mAbs could bind to the head region of the N9 NA close to the enzyme activity sites, and four key sites of N9 NA were reported for the first time. The mAbs D3 and 7H2 could simultaneously inhibit the cleavage of the sialic acid of fetuin protein with large molecular weight and NA-XTD with small molecule weight in the NA inhibition experiment, prevent the formation of virus plaque at a low concentration, and effectively protect the mice from the challenge of the lethal dose of H7N9 virus.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2019.1708214"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Protective efficacy of anti-neuraminidase monoclonal antibodies against H7N9 influenza virus infection."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65761",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Endogenous feline leukemia virus (FeLV)-related sequences (enFeLV) are a family of proviral elements found in domestic cats and their close relatives. These elements can recombine with exogenous, infectious FeLVs of subgroup A (FeLV-A), giving rise to host range variants of FeLV-B. We found that a subset of defective enFeLV proviruses is highly expressed in lymphoma cell lines and in a variety of primary tissues, including lymphoid tissues from healthy specific-pathogen-free cats. At least two RNA species were detected, a 4.5-kb RNA containing gag, env, and long terminal repeat sequences and a 2-kb RNA containing env and long terminal repeat sequences. Cloning of enFeLV cDNA from two FeLV-free lymphoma cell lines (3201 and MCC) revealed a long open reading frame (ORF) encoding a truncated env gene product corresponding to the N-terminal portion of gp70env. Interestingly, all of three natural FeLV-B isolates include 3' env sequences which are missing from the highly transcribed subset and hence must be derived from other enFeLV elements. The enFeLV env ORF cDNA clones were closely similar to a previously characterized enFeLV provirus, CFE-16, but were polymorphic at a site corresponding to an exogenous FeLV neutralization epitope. Site-specific antiserum raised to a C-terminal 30-amino-acid peptide of the enFeLV env ORF detected an intracellular product of 35 kDa which was also shed from cells in stable form. Expression of the 35-kDa protein correlated with enFeLV RNA levels and was negatively correlated with susceptibility to infection with FeLV-B. Cell culture supernatant containing the 35-kDa protein specifically blocked infection of permissive fibroblast cells with FeLV-B isolates. We suggest that the truncated env protein mediates resistance by receptor blockade and that this form of enFeLV expression mediates the natural resistance of cats to infection with FeLV-B in the absence of FeLV-A.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/22608"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Defective endogenous proviruses are expressed in feline lymphoid cells: evidence for a role in natural resistance to subgroup B feline leukemia viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65768",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Epstein-Barr virus (EBV) transforms resting primary human B lymphocytes into indefinitely proliferating lymphoblastoid cell lines in vitro and is associated with several human malignancies in vivo. Recombinant EBV genetic analyses combined with in vitro B lymphocyte transformation assays demonstrate that latent infection membrane protein 1 (LMP1) is essential for EBV-mediated lymphocyte transformation. LMP1 has no intrinsic enzymatic activity but instead aggregates cellular proteins of the tumor necrosis factor receptor signaling pathway to activate transcription factor NF-kappaB. Mutants rendering LMP1 defective in these protein interactions are impaired in their abilities to activate NF-kappaB in reporter gene assays. Concordantly, EBV recombinants with LMP1 mutations that are compromised for NF-kappaB activation are impaired for growth transformation. Thus, EBV-mediated growth transformation is genetically and biochemically linked to LMP1-mediated activation of NF-kappaB",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://ikee.lib.auth.gr/record/206322"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Epstein-Barr virus transformation: involvement of latent membrane protein 1-mediated activation of NF-kappa B"
+    },  {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65782",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Stringent, stochastic viral population bottlenecks have been observed in the infections of many 5 viruses, but exactly how and why they occur is unclear. A critical review of recent literature prompts us 6 to propose a new hypothesis, designated Isolate, Amplify, and Select (IAS), that satisfactorily explains 7 the bottlenecks in single-stranded, positive sense (+) RNA virus infections. This new hypothesis 8 postulates that, unlike those in free-living organisms, the viral population bottlenecks are imposed by 9 viruses themselves, inside the infected cells, through virus-encoded bottleneck-enforcing proteins 10 (BNEPs) that function in a concentration-dependent manner. Most BNEPs are directly translated from 11 the (+) RNA genomes of invading viruses, so that if numerous virions of the same virus invade a cell 12 simultaneously, the bottleneck-ready concentration of BNEPs would be reached sufficiently early to 13 arrest nearly all internalized viral genomes. As a result, in these cells very few (as few as one) viral 14 genomes escape from the bottlenecks stochastically to initiate viral reproduction. Repetition of this 15 process in successively infected cells ensures the progeny genomes in each cell descend from the same 16 parental genome(s), hence isolating different mutant genomes in separate cells. This isolation precludes 17 mutant viral genomes encoding defective replication proteins from exploiting the complementing 18 proteins synthesized by sister genomes, leading to the prompt elimination of such mutants. Conversely, 19 the IAS model ensures replication proteins with beneficial mutations exclusively amplify the viral 20 genomes that harbor the very mutations. Reiteration of this process in consecutively infected cells 21 enriches such beneficial mutations in the virus pool. In conclusion, the IAS hypothesis provides a 22 compelling evolutionary model for population bottlenecks of (+) RNA viruses.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.20944/preprints202003.0021.v1"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Virus Population Bottlenecks: What Are They Telling Us?"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65810",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) A growing number of studies report that viruses can spread in groups in so-called collective infectious units. By increasing the cellular multiplicity of infection, collective dispersal may allow for social-like interactions, such as cooperation or cheating. Yet, little is known about how such interactions evolve. In previous work with vesicular stomatitis virus, we showed that virion aggregation accelerates early infection stages in most cell types, providing a short-term fitness benefit to the virus. Here, we examine the effects of virion aggregation over several infection cycles. Flow cytometry, deep sequencing, infectivity assays, reverse transcription-quantitative PCR, and electron microscopy revealed that virion aggregation rapidly promotes the emergence of defective interfering particles. Therefore, virion aggregation provides immediate fitness benefits to the virus but incurs fitness costs after a few viral generations. This suggests that an optimal strategy for the virus is to undergo virion aggregation only episodically, for instance, during interhost transmission.IMPORTANCE Recent insights have revealed that viruses use a highly diverse set of strategies to release multiple viral genomes into the same target cells, allowing the emergence of beneficial, but also detrimental, interactions among viruses inside infected cells. This has prompted interest among microbial ecologists and evolutionary biologists in studying how collective dispersal impacts the outcome of viral infections. Here, we have used vesicular stomatitis virus as a model system to study the evolutionary implications of collective dissemination mediated by viral aggregates, since this virus can spontaneously aggregate in the presence of saliva. We find that saliva-driven aggregation has a dual effect on viral fitness; whereas aggregation tends to increase infectivity in the very short term, virion aggregates are highly susceptible to invasion by noncooperative defective variants after a few viral generations.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1128/mBio.02156-19"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Collective Viral Spread Mediated by Virion Aggregates Promotes the Evolution of Defective Interfering Particles."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65824",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Porcine deltacoronavirus (PDCoV) is an emerging swine coronavirus that causes severe diarrhea, resulting in high mortality in neonatal piglets. Despite widespread outbreaks in many countries, no effective PDCoV vaccines are currently available. Here, we generated, for the first time, a full-length infectious cDNA clone of PDCoV. We further manipulated the infectious clone by replacing the NS6 gene with a green fluorescent protein (GFP) to generate rPDCoV-ΔNS6-GFP; likewise, rPDCoV-ΔNS7 was constructed by removing the ATG start codons of the NS7 gene. Growth kinetics studies suggest that rPDCoV-ΔNS7 could replicate similarly to that of the wild-type PDCoV, whereas rPDCoV-ΔNS6-GFP exhibited a substantial reduction of viral titer in vitro and in vivo. Piglets inoculated with rPDCoV-ΔNS7 or wild-type PDCoV showed similar diarrheic scores and pathological injury. In contrast, rPDCoV-ΔNS6-GFP-infected piglets did not show any clinical signs, indicating that the NS6 protein is an important virulence factor of PDCoV and that the NS6-deficient mutant virus might be a promising live-attenuated vaccine candidate. Taken together, the reverse genetics platform described here not only provides more insights into the role of PDCoV accessory proteins in viral replication and pathogenesis, but also allows the development of novel vaccines against PDCoV infection.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1080/22221751.2019.1701391"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Genetic manipulation of porcine deltacoronavirus reveals insights into NS6 and NS7 functions: a novel strategy for vaccine design."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65831",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Virus replication displays a large cell-to-cell heterogeneity; yet, not all sources of this variability are known. Here, we study the effect of defective interfering (DI) particle (DIP) co-infection on cell-to-cell variability in influenza A virus (IAV) replication. DIPs contain a large internal deletion in one of their eight viral RNAs (vRNA) and are, thus, defective in virus replication. Moreover, they interfere with virus replication. Using single-cell isolation and reverse transcription polymerase chain reaction, we uncovered a large between-cell heterogeneity in the DI vRNA content of infected cells, which was confirmed for DI mRNAs by single-cell RNA sequencing. A high load of intracellular DI vRNAs and DI mRNAs was found in low-productive cells, indicating their contribution to the large cell-to-cell variability in virus release. Furthermore, we show that the magnitude of host cell mRNA expression (some factors may inhibit virus replication), but not the ribosome content, may further affect the strength of single-cell virus replication. Finally, we show that the load of viral mRNAs (facilitating viral protein production) and the DI mRNA content are, independently from one another, connected with single-cell virus production. Together, these insights advance single-cell virology research toward the elucidation of the complex multi-parametric origin of the large cell-to-cell heterogeneity in virus infections.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.3390/v12010071"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Single-Cell Analysis Uncovers a Vast Diversity in Intracellular Viral Defective Interfering RNA Content Affecting the Large Cell-to-Cell Heterogeneity in Influenza A Virus Replication."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65838",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) The GM1 strain of feline leukaemia virus (FeLV) was isolated from a naturally occurring case of myeloid leukaemia and induces severe haematopoietic abnormalities, including myeloblastic leukaemia, on inoculation into cats. Molecular clones of FeLV-GM1 proviruses were obtained and studied by restriction enzyme mapping, blot hybridization and partial DNA sequence analysis. Two types of clone were isolated; the first was a replication-competent FeLV of subgroup A, resembling other low or minimally pathogenic FeLV-A isolates; the second was replication-defective with extensive deletions and mutations in gag and pol, although it has an intact env gene of subgroup B phenotype. Large segments of the defective proviruses, from the 5' leader sequence upstream of the gag gene to the 5' half of the env gene, show structural hallmarks of endogenous FeLV-related proviruses. Infectious FeLV-GM1 viruses recovered after transfection were tested for their leukaemogenic potential in newborn cats. Early polyclonal myeloproliferative changes were observed in cats inoculated with FeLV-A/GM1 alone, although these were more pronounced in animals receiving the full FeLV-AB/GM1 complex reconstituted by cotransfection of the defective virus FeLV-B with its FeLV-A helper. Analysis of viruses in the bone marrow showed that replication of the subgroup B component is delayed and restricted to a proportion of cats. Most of the infected cats developed persistent abnormalities of haematopoiesis and one progressed to disseminated myeloid leukaemia. The defective recombinant FeLV-B/GM1 appears to play an indirect but important role in myeloid leukaemogenesis.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/19970"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Molecular cloning and characterization of a defective recombinant feline leukaemia virus associated with myeloid leukaemia"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65845",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) HIV-1 proviruses persist in the CD4+ T cells of HIV-infected individuals despite years of combination antiretroviral therapy (cART) with suppression of HIV-1 RNA levels <40 copies/mL. Greater than 95% of these proviruses detected in circulating peripheral blood mononuclear cells (PBMCs) are referred to as \"defective\" by virtue of having large internal deletions and lethal genetic mutations. As these defective proviruses are unable to encode intact and replication-competent viruses, they have long been thought of as biologically irrelevant \"graveyard\" of viruses with little significance to HIV-1 pathogenesis. Contrary to this notion, we have recently demonstrated that these defective proviruses are not silent, are capable of transcribing novel unspliced forms of HIV-RNA transcripts with competent open reading frames (ORFs), and can be found in the peripheral blood CD4+ T cells of patients at all stages of HIV-1 infection. In the present study, by an approach of combining serial dilutions of CD4+ T cells and T cell-cloning technologies, we are able to demonstrate that defective proviruses that persist in HIV-infected individuals during suppressive cART are translationally competent and produce the HIV-1 Gag and Nef proteins. The HIV-RNA transcripts expressed from these defective proviruses may trigger an element of innate immunity. Likewise, the viral proteins coded in the defective proviruses may form extracellular virus-like particles and may trigger immune responses. The persistent production of HIV-1 proteins in the absence of viral replication helps explain persistent immune activation despite HIV-1 levels below detection, and also presents new challenges to HIV-1 eradication.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1073/pnas.1917876117"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Defective HIV-1 proviruses produce viral proteins."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65852",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) The viral RNA-dependent RNA polymerase (RdRp) is a well-established target for development of broad-spectrum antiviral therapeutics. Incorporation of ribonucleotide analogues by the RdRp will either cause termination of RNA synthesis or mutagenesis of the RNA product. We demonstrated recently that incorporation of a pyrazine-carboxamide ribonucleotide into nascent RNA leads to pausing and backtracking of the elongating RdRp. Here, we provide evidence for the single-stranded RNA product of backtracking serving as an intermediate in RdRp-catalyzed, template-switching reactions. This intermediate is used for both intramolecular template-switching (copy-back RNA synthesis) and intermolecular template-switching (homologous RNA recombination). The use of a magnetic-tweezers platform to monitor RdRp elongation dynamics permitted direct observation of copy-back synthesis and illuminated properties of the RdRp that promote copy-back synthesis, including stability of the RdRp-nascent-RNA complex and the dimensions of the RdRp nucleic-acid-binding channel. In cells, recombination was stimulated by the presence of a pyrazine-carboxamide ribonucleotide. The effect of the drug on recombination was diminished for a recombination-defective virus, but this virus was not resistant to the drug. The discovery that a ribonucleotide analogue can induce copy-back RNA synthesis suggests that this third mechanistic class of compounds may function by promoting formation of defective viral genomes. This study identifies RdRp-catalyzed intra- and intermolecular template switching as a viable new mechanistic target with potentially broad-spectrum appeal.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1101/2020.02.12.946558"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Induced copy-back RNA synthesis as a novel therapeutic mechanism against RNA viruses"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65859",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Cancer is a disease of a series of genes. Thus, theoretically, brain tumors could be treated by targeting their fundamental molecular defects. Currently, most of the approved clinical protocols for gene therapy involve cancer patients. Several of these protocols are designed to improve the treatment of brain tumors. In this brief report, we analyze the rationale, advantages, and disadvantages of a series of gene therapy approaches against brain tumors that include transfer of tumor suppressor genes and cell-cycle modulators; suicide or prodrug strategies; immunogene therapy; antiangiogenesis; and oncolytic virus therapy. In summary, in this review, we highlight the translational advances in molecular medicine that broaden our battery of therapies for patients with brain tumors.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/24715"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Targeting in gene therapy for gliomas"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65866",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) In patients with human immunodeficiency virus (HIV) infection, neutrophil and \nmonocyte functions, including phagocytosis, are impaired. The purpose of this \nstudy was to investigate changes of phagocytic function and respiratory burst \noccurring over the course of patients infected by the HIV-1 virus. \nTreatment-naive patients (group B), patients receiving highly active \nantiretroviral treatment (HAART) (group C) and patients in which HAART has \nfailed (group D) were studied and compared with healthy volunteers (group A). \nPhagocytosis and oxidative burst were evaluated using commercially available \nkits. Results clearly denote a significant decrease of the phagocytic function \nof both cell types of groups B and C compared with group A. Among group C \npatients, those in the upper quartile of CD4 increase had higher oxidative \nburst compared with patients of the other quartiles. In addition, comparisons \nclearly showed a lower degree of phagocytic function and of oxidative burst of \nboth monocytes and neutrophils of groupDcompared with group B. Finally, it was \nfound that monocyte and neutrophil function was correlated inversely to the \nchange in viral load, i.e. the greater the decrease of viral load, the better \nthe phagocytic and oxidative activity. Innate immunity defects appear to be \npresent in HIV-positive patients, regarding phagocytic activity and oxidative \nburst of monocytes and neutrophils. These defects are greatly influenced by the \nlevel of treatment efficacy, with emphasis on CD4 cell counts and viral load.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://pergamos.lib.uoa.gr/uoa/dl/object/uoadl:1307266"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Μελέτη της λειτουργικής δραστηριότητας των ουδετερόφιλων και μονοκυττάρων HIV (+)  ατόμων κατά τη διάρκεια της αντιρετροϊκής αγωγής"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65873",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Classical Hodgkin lymphomas (cHL) have now been recognized as B-cell lymphomas with some exceptional cases of T-cell origin. In recent years, there has been accumulating evidence that Hodgkin and Reed-Sternberg (H/RS) cells, the presumed neoplastic-cell population in cHL, are characterized by a profound disturbance of the cell cycle and apoptosis regulation. The constitutive activation of the nuclear factor (NF)-kappaB pathway, which is considered to be involved in the proliferation and survival of H/RS cells. Moreover, substantial evidence that H/RS cells have defective cell cycle and apoptosis regulation has been provided by studies showing that these cells are characterized, in a large proportion of cases, by alterations of the p53, Rb and p27 tumor suppressor pathways, overexpression of cyclins involved in the G1/S and G2/M transition such as cyclins E, D2, D3, A and B1, overexpression of cyclin-dependent kinases such as CDK1, 2 and 6 and overexpression of anti-apoptotic proteins such as c-FLIP, bcl-xl, c-IAP2, X-linked I4P and survivin. Recent studies suggest that interleukin 13 (IL-13) is an important growth and survival factor in H/RS cells. Furthermore, the Epstein-Barr Virus (EBV), which is present in H/RS cells in about 30-50% of cHL, has been shown to affect the cell cycle and apoptosis regulation in cHL. The present review summarizes data with respect to the cell cycle and apoptosis deregulation in cHL.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://olympias.lib.uoi.gr/jspui/handle/123456789/23250"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Cell cycle and apoptosis deregulation in classical Hodgkin lymphomas"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65880",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Influenza A viruses (IAVs) encode their genome across eight, negative sense RNA segments. During viral assembly, the failure to package all eight segments, or packaging a mutated segment, renders the resulting virion incompletely infectious. It is known that the accumulation of these defective particles can limit viral disease by interfering with the spread of fully infectious particles. In order to harness this phenomenon therapeutically, we defined which viral packaging signals were amenable to duplication and developed a viral genetic platform which produced replication competent IAVs that require up to two additional artificial genome segments for full infectivity. The modified and artificial genome segments propagated by this approach are capable of acting as \"decoy\" segments that, when packaged by coinfecting wild-type viruses, lead to the production of non-infectious viral particles. Although IAVs which require 10 genomic segments for full infectivity are able to replicate themselves and spread in vivo, their genomic modifications render them avirulent in mice. Administration of these viruses, both prophylactically and therapeutically, was able to rescue animals from a lethal influenza virus challenge. Together, our results show that replicating IAVs designed to propagate and spread defective genomic segments represent a potent anti-influenza biological therapy that can target the conserved process of particle assembly to limit viral disease.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1371/journal.ppat.1008098"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Influenza viruses that require 10 genomic segments as antiviral therapeutics."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65887",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Viral infections in pregnancy are major causes of maternal and fetal morbidity \nand mortality. Infections can develop in the neonate transplacentally, \nperinatally (from vaginal secretions or blood), or postnatally (from breast \nmilk or other sources). The clinical manifestations of neonatal infections vary \ndepending on the viral agent and gestational age at exposure. The risk of \ninfection is usually inversely related to gestational age at acquisition, some \nresulting in a congenital malformation syndrome. Infections known to produce \ncongenital defects have been described with the acronym TORCH (Toxoplasma, \nothers, rubella, cytomegalovirus [CMV], herpes). The &quot;others&quot; category has \nrapidly expanded to include several viruses known to cause neonatal disease. \nTraditionally, the viral infections of concern during pregnancy were those \ncaused by rubella virus, CMV, herpes simplex virus (HSV), and  parvovirus B19 \n(B19V). Toxoplasmosis is caused by infection with the protozoan Toxoplasma \ngondii, an obligate intracellular parasite. Approximately 10-20% of pregnant \nwomen infected with T gondii become symptomatic. The most common signs of \ninfection are lymphadenopathy and fever. If the mother was infected prior to \npregnancy, there is virtually no risk of fetal infection, as long as she \nremains immunocompetent. When a mother is infected with T gondii during \ngestation, the parasite may be disseminated hematogenously to the placenta. \nWhen this occurs, infection may be transmitted to the fetus transplacentally or \nduring vaginal delivery. The risk of infection to the fetus increases with the \ngestational age and is mild or not apparent at birth.  The most significant \nmanifestation of toxoplasmosis in the fetus is encephalomyelitis, which may \nhave severe results. Approximately 10% of prenatal T gondii infections result \nin abortion or neonatal death. In approximately 67-80% of prenatally infected \ninfants, the infection is subclinical and can be diagnosed using only \nserological and other laboratory methods. Although these infants appear healthy \nat birth, they may develop clinical symptoms and deficiencies later in life. \nCMV is a double-stranded DNA herpes virus and represents the most common \ncongenital viral infection. Primary, reactivation, or recurrent CMV infection \ncan occur in pregnancy and can lead to congenital CMV infection. Transplacental \ninfection can result in intrauterine growth restriction, sensorineural hearing \nloss, intracranial calcifications, microcephaly, hydrocephalus, \nhepatosplenomegaly, delayed psychomotor development, and/or optic atrophy. \nVertical transmission of CMV can occur at any stage of pregnancy; however, \nsevere sequelae are more common with infection in the first trimester, while \nthe overall risk of infection is greatest in the third trimester. Most (90%) \nCMV infections cause no symptoms, but 10% result in signs and symptoms, such as \ncongenital hearing loss (most common). However; thirty percent of infants with \nsevere CMV infection die; among survivors, more than half eventually develop \nneurological sequelae, including microcephaly, mental retardation, and/or \nsensorineural hearing loss. Rubella is one of the more teratogenic viruses. \nCongenital rubella syndrome (CRS) is characterized by intrauterine growth \nrestriction, intracranial calcifications, microcephaly, cataracts, cardiac \ndefects, neurologic disease, osteitis, and hepatosplenomegaly. Neonates with \nrubella may have a &quot;blueberry muffin&quot; appearance caused by purpuric skin \nlesions that result from extramedullary hematopoiesis. Heart defects in these \ninfants include ventricular septal defects, patent ductus arteriosus, pulmonary \nstenosis, and coarctation of the aorta. Most of these complications develop in \ninfants born to mothers who acquire rubella infection during the first 16 weeks \nof pregnancy. B19V causes erythema infectiosum (fifth disease). Although most \nadults with B19V infection are asymptomatic, the effects of this virus on the \nfetus are much greater and include miscarriage, fetal anemia, hydrops fetalis, \nmyocarditis, and/or intrauterine fetal death. I\nnfection occurs most frequently in the winter and spring. Thirty to 40% of \npregnant women are seronegative for B19V and are thus susceptible to infection. \nVarious studies have estimated that 3%-14% of intrauterine fetal deaths occur \nin the setting of B19V infection. Second-trimester infections have been studied \nmost frequently because infection in this trimester carries a 1%-3% risk of \nhydrops; however, infection in any trimester may result in intrauterine fetal \nloss.  Thirty to 60% of women receiving obstetric care have serologic evidence \nof past HSV infection. Approximately 10% of infections are congenital, usually \na consequence of the mother acquiring primary HSV infection during pregnancy \nand the fetus acquiring the infection transplacentally or via an ascending \ninfection from the cervix. Intrauterine infection is associated with \nintrauterine growth restriction, preterm labor, and miscarriage. The risk of \nneonatal herpes and death is highest in infants born to mothers who have not \nseroconverted by the time of delivery. HSV infection acquired in this manner \ncarries a 70% risk of dissemination and is associated with 3 distinct \nsyndromes, each with its own typical outcome. The first and most common (45%) \nis localized skin, eye, or mouth disease. Approximately 30% of cases manifest \nas central nervous system (CNS) disease, including meningitis or encephalitis, \nwith evidence of HSV DNA in the cerebrospinal fluid (CSF).",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://pergamos.lib.uoa.gr/uoa/dl/object/uoadl:1313912"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Συγγενείς λοιμώξεις και περιγεννητική έκβαση"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65894",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Defective viral genomes (DVGs) are generated during viral replication and are unable to carry out a full replication cycle unless coinfected with a full-length virus. DVGs are produced by many viruses, and their presence correlates with alterations in infection outcomes. Historically, DVGs were studied for their ability to interfere with standard virus replication as well as for their association with viral persistence. More recently, a critical role for DVGs in inducing the innate immune response during infection was appreciated. Here we review the role of DVGs of RNA viruses in shaping outcomes of experimental as well as natural infections and explore the mechanisms by which DVGs impact infection outcome.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1146/annurev-virology-092818-015652"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "The Impact of Defective Viruses on Infection and Immunity."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65959",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) A hybrid two stage one-against-all Support Vector Machine (SVM) approach is proposed for the automated diagnosis of defective rolling element bearings. The basic concept and major advantage of the method, is that its training can be performed using simulation data, which result from a well established model, describing the dynamic response of defective rolling element bearings. Then, vibration measurements, resulting from the machine under condition monitoring, can be imported and processed directly by the already trained SVM, eliminating thus the need of training the SVM with experimental data of the specific defective bearing. A key aspect of the method is the data preprocessing approach, which among others, includes order analysis, in order to overcome problems related to sudden changes of the shaft rotating speed. Moreover, frequency domain features both from the raw signal as well as from the demodulated signal are used as inputs to the SVM classifiers for a two-stage recognition and classification procedure. At the first stage, a SVM classifier separates the normal condition signals from the faulty signals. At the second stage, a SVM classifier recognizes and categorizes the type of the fault. The effectiveness of the method tested in one literature established experimental test case and in three different industrial test cases, including a total number of 34 measurements. Each test case includes successive measurements from bearings under different types of defects, different loads and different rotation speeds. In all cases, the method presents 100% classification success. © 2011 Elsevier Ltd. All rights reserved.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://dspace.lib.ntua.gr/handle/123456789/29573"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "A Support Vector Machine approach based on physical model training for rolling element bearing fault detection in industrial environments"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65966",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) The intine, the inner layer of the pollen wall, is essential for the normal development and germination of pollen. However, the composition and developmental regulation of the intine in rice (Oryza sativa) remain largely unknown. Here, we identify a microRNA, OsmiR528, which regulates the formation of the pollen intine and thus male fertility in rice. The mir528 knockout mutant aborted pollen development at the late binucleate pollen stage, significantly decreasing the seed-setting rate. We further demonstrated that OsmiR528 affects pollen development by directly targeting the uclacyanin gene OsUCL23 (encoding a member of the plant-specific blue copper protein family of phytocyanins) and regulating intine deposition. OsUCL23 overexpression phenocopied the mir528 mutant. The OsUCL23 protein localized in the prevacuolar compartments (PVCs) and multivesicular bodies (MVBs). We further revealed that OsUCL23 interacts with a member of the proton-dependent oligopeptide transport (POT) family of transporters to regulate various metabolic components, especially flavonoids. We propose a model in which OsmiR528 regulates pollen intine formation by directly targeting OsUCL23 and in which OsUCL23 interacts with the POT protein on the PVCs and MVBs to regulate the production of metabolites during pollen development. The study thus reveals the functions of OsmiR528 and an uclacyanin during pollen development.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1073/pnas.1810968117"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "OsmiR528 regulates rice-pollen intine formation by targeting an uclacyanin to influence flavonoid metabolism."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65973",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Graphene research and in particular the topic of chemical functionalization has been exploded in the last decade. The main aim is to induce solubility and thereby enhance processability of the material, which is otherwise insoluble and inapplicable for technological applications when stacked in the form of graphite. In this frame, initially, graphite was oxidized under harsh conditions to yield exfoliated graphene oxide sheets, soluble in aqueous media and amenable to chemical modifications due to the presence of carboxylic acid groups at the edges of the lattice. Some donor-acceptor hybrid materials with photo- and/or electro-active components were prepared and characterized, while their charge-transfer properties were evaluated. However, it was obvious that the highly defected framework of graphene oxide cannot be really utilized in applications that are governed by charge-transfer processes, for example in solar cells. The alternative route for solubilizing and modifying graphene by exfoliating graphite is the current method of choice for the realization of novel hybrid materials and further boost their direct applicability in artificial photosynthesis and the construction of photovoltaic devices. In this review article, the routes for obtaining donor-acceptor graphene-based hybrid materials for managing charge-transfer phenomena, mainly, but not exclusively, with porphyrins and phthalocyanines are presented. Earlier examples and studies performed on graphene oxide modified with organic electron donors are also given.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://repository.edulll.gr/1546"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Donor-acceptor graphene-based hybrid materials for managing photoinduced electrontransfer reactions"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65980",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Trypanosoma brucei is a kinetoplastid parasite that causes African trypanosomiasis, which is fatal if left untreated. T. brucei regularly switches its major surface antigen, VSG, to evade the host immune responses. VSGs are exclusively expressed from subtelomeric expression sites (ESs) where VSG genes are flanked by upstream 70 bp repeats and downstream telomeric repeats. The telomere downstream of the active VSG is transcribed into a long-noncoding RNA (TERRA), which forms RNA:DNA hybrids (R-loops) with the telomeric DNA. At an elevated level, telomere R-loops cause more telomeric and subtelomeric double-strand breaks (DSBs) and increase VSG switching rate. In addition, stabilized R-loops are observed at the 70 bp repeats and immediately downstream of ES-linked VSGs in RNase H defective cells, which also have an increased amount of subtelomeric DSBs and more frequent VSG switching. Although subtelomere plasticity is expected to be beneficial to antigenic variation, severe defects in subtelomere integrity and stability increase cell lethality. Therefore, regulation of the telomere and 70 bp repeat R-loop levels is important for the balance between antigenic variation and cell fitness in T. brucei. In addition, the high level of the active ES transcription favors accumulation of R-loops at the telomere and 70 bp repeats, providing an intrinsic mechanism for local DSB formation, which is a strong inducer of VSG switching.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1016/j.jmb.2019.10.025"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Telomere and Subtelomere R-loops and Antigenic Variation in Trypanosomes."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65987",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Congenital heart diseases (CHDs) are defined as gross structural abnormalities \nof the heart, generated during embryonic development. It is a group of commonly \noccurring congenital defects (19 - 75 ‰), which is characterized as one of the \nmain causes of childhood mortality and morbidity worldwide. The fundamental \netiology for the majority of CHDs is unknown. However, according to the \nliterature, the basis of these cardiac lesions is multifactorial, due to both \nenvironmental and genetic factors, including large chromosomal abnormalities, \nsingle gene mutations, copy number variations (CNVs) and single nucleotide \npolymorphisms (SNPs).\nThe aim of this study is the identification of submicroscopic chromosomal \nabnormalities that may be associated with the development of congenital heart \ndiseases, by studying the genome of 12 patients, suffering from atrial septal \ndefects (ASD) or ventricular septal defects (VSD), with array Comparative \nGenomic hybridization (array - CGH). High resolution (7 - 13 Kb) 4 x 180K \n(SurePrint G3 CGH + SNP) Agilent arrays were used.\nCNVs were detected in all 12 patients and in some of them there were genes \nwhich are implicated in normal heart development and function. These genes are \ninvolved either in determining the asymmetry of right - left side or in \nsignaling pathways that induce the differentiation of the heart or in the \nepigenetic mechanisms that control which genes are activated in each stage of \norganogenesis. Therefore, changes in copy number, function, structure and \nexpression of these genes can lead to the development of congenital heart \ndefects. Also, in some patients regions of loss of heterozygosity (LOHs) in \nwhich probed CHD candidate genes were found, whose contribution to the \npathological phenotype requires further investigation.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://pergamos.lib.uoa.gr/uoa/dl/object/uoadl:1311428"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Έλεγχος συγγενών καρδιοπαθειών με τη μέθοδο του συγκριτικού γενωμικού υβριδισμoύ με μικροσυστοιχίες (array CGH)"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N65994",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) The authors report on a simple bistable switching device based on a thin film of an electroactive polymer containing a fluorene group sandwiched between aluminum electrodes. No additional materials (e.g., metallic or semiconductive nanoparticles) are required for the devices to operate. This improves considerably the scalability of the memory elements at nanometer dimensions. The device operation is thought to depend on charge trapping at fluorenone defects within the organic film. (c) 2007 American Institute of Physics.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://dspace.lib.ntua.gr/handle/123456789/28114"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Electronic memory device based on a single-layer fluorene-containing organic thin film"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66001",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) A bstract Centrosomes function as organizing centers of microtubules and support accurate mitosis in many animal cells. However, it remains to be explored whether and how centrosomes also facilitate the progression through different phases of the cell cycle. Here we show that impairing the composition of centrosomes, by depletion of centrosomal components or by inhibition of polo-like kinase 4 (PLK4), reduces the progression of DNA replication forks. This occurs even when the cell cycle is arrested before damaging the centrosomes, thus excluding mitotic failure as the source of replication stress. Mechanistically, the kinase MLK3 associates with centrosomes. When centrosomes are disintegrated, MLK3 activates the kinases p38 and MK2/MAPKAPK2. Transcription-dependent RNA:DNA hybrids (R-loops) are then causing DNA replication stress. Fibroblasts from patients with microcephalic primordial dwarfism (Seckel syndrome) harbouring defective centrosomes showed replication stress and diminished proliferation, which were each alleviated by inhibition of MK2. Thus, centrosomes not only facilitate mitosis, but their integrity is also supportive in DNA replication. Highlights <jats:list list-type=\"bullet\"><jats:list-item> Centrosome defects cause replication stress independent of mitosis. <jats:list-item> MLK3, p38 and MK2 (alias MAPKAPK2) are signalling between centrosome defects and DNA replication stress through R-loop formation. <jats:list-item> Patient-derived cells with defective centrosomes display replication stress, whereas inhibition of MK2 restores their DNA replication fork progression and proliferation. Graphical abstract <jats:fig id=\"ufig1\" position=\"float\" orientation=\"portrait\" fig-type=\"figure\"><jats:graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"898684v1_ufig1\" position=\"float\" orientation=\"portrait\" />",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1101/2020.01.09.898684"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Centrosome impairment causes DNA replication stress through MLK3/MK2 signaling and R-loop formation"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66008",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) In this work infrared thermography was used as a diagnostic tool for the performance assessment of a photovoltaic array integrated on the southern façade of NTUA's Chemical Engineering Building. This grid-connected 50 kWp solar photovoltaic array, installed under an EC Thermie Project (SE-142-97-GR-ES), operates in a standard and hybrid PV-Thermal configuration, meant to save conventional energy. The thermographic system used for the analysis covers the wavelength region 8-12 μm. The thermal images obtained showed that there are notable temperature differences on number PV panels, which may be attributed to material defects, manufacturing faults, module malfunction, and external abuse. © 2008 Materials Research Society.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://dspace.lib.ntua.gr/handle/123456789/35611"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "IR based photovoltaic array performance assessment"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66015",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Herein, we report hierarchical 3D NiMn-layered double hydroxide (NiMn-LDHs) shells grown on conductive silver nanowire (Ag NWs) cores as efficient, low-cost, and durable oxygen reduction reaction (ORR)/oxygen evolution reaction (OER) bifunctional electrocatalysts for metal-air batteries. The hierarchical 3D architectured Ag NW@NiMn-LDH catalysts exhibit superb OER/ORR activities in alkaline conditions. The outstanding bifunctional activities of Ag NW@NiMn-LDHs are essentially attributed to increasing both site activity and site populations. The synergistic contributions from the hierarchical 3D open-pore structure of the LDH shells, improved electrical conductivity, and small thickness of the LDHs shells are associated with more accessible site populations. Moreover, the charge transfer between Ag cores and metals of LDH shells and the formation of defective and distorted sites (less coordinated Ni and Mn sites) strongly enhance the site activity. Thus, Ag NW@NiMn-LDH hybrids exhibit a 0.75 V overvoltage difference between ORR and OER with excellent durability for 30 h, demonstrating the distinguished bifunctional electrocatalyst reported to date. Interestingly, the homemade rechargeable Zn-air battery using the hybrid Ag NW@NiMn-LDHs (1:2) catalyst as the air electrode exhibits a charge-discharge voltage gap of ∼0.77 V at 10 mA cm-2 and shows excellent cycling stability. Thus, the concept of the hierarchical 3D architecture of Ag NW@NiMn-LDHs considerably advances the practice of LDHs toward metal-air batteries and oxygen electrocatalysts.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1021/acsnano.9b07487"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Hierarchical 3D Architectured Ag Nanowires Shelled with NiMn-Layered Double Hydroxide as an Efficient Bifunctional Oxygen Electrocatalyst."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66022",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) DNA replication and RNA transcription compete for the same substrate during S phase. Cells have evolved several mechanisms to minimize such conflicts. Here, we identify the mechanism by which the transcription termination helicase Sen1 associates with replisomes. We show that the N terminus of Sen1 is both sufficient and necessary for replisome association and that it binds to the replisome via the components Ctf4 and Mrc1. We generated a separation of function mutant, sen1-3, which abolishes replisome binding without affecting transcription termination. We observe that the sen1-3 mutants show increased genome instability and recombination levels. Moreover, sen1-3 is synthetically defective with mutations in genes involved in RNA metabolism and the S phase checkpoint. RNH1 overexpression suppresses defects in the former, but not the latter. These findings illustrate how Sen1 plays a key function at replication forks during DNA replication to promote fork progression and chromosome stability.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1016/j.celrep.2020.01.087"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Sen1 Is Recruited to Replication Forks via Ctf4 and Mrc1 and Promotes Genome Stability."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66029",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Visible-light-driven stacked-layer heterogeneous photocatalyst carbonitride/tungstophosphate (TCN) was constructed via in-situ solid-state thermal transformation using melamine phosphotungstate (MPW). The structural, morphological and optical properties of the samples were investigated. Compared to the MPW hybrids and phosphotungstic acid hydrate, the TCN photocatalysts showed excellent visible light photocatalytic activity. During the thermal transformation, the melamine molecules polymerize to form the defective heptazine structure carbonitride attached to the surface of mixed-valence Keggin units. The interfacial POMs anions-π interactions, ligand-to-metal charge transfer and mix-valence organic-POMs structure makes the electrons fully delocalized over the MPW hybrids, and the TCN photocatalysts obtain the extended light absorption. The Keggin units accept and transfer electrons, so the recombination of photogenerated carriers is suppressed. 13TCN-390 obtains the optimal photocatalytic activity, its photocatalytic degradation efficiency of imidacloprid and rate constant k are 6.38 and 13.50 times than that of CN-390, respectively. The enhanced photocatalytic activity arises from the extended light absorption, suppressed photogenerated carriers' recombination, surface structure defect and suitable band structure. h+ and OH are the main reactive species when the proposed photocatalytic mechanism was done. This study provides a promising construction strategy for polymer/POMs photocatalysts using different organic-POMs hybrids.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1016/j.jcis.2019.05.005"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "In-situ solid phase thermal transformation of self-assembled melamine phosphotungstates produce efficient visible light photocatalysts."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66036",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Species of flies in the genus Drosophila differ dramatically in their preferences for mates, but little is known about the genetic or neurological underpinnings of this evolution. Recent advances have been made to our understanding of one case: pheromone preference evolution between the species D. melanogaster and D. simulans Males of both species are very sensitive to the pheromone 7,11-HD that is present only on the cuticle of female D. melanogaster In one species this cue activates courtship, and in the other it represses it. This change in valence was recently shown to result from the modification of central processing neurons, rather than changes in peripherally expressed receptors, but nothing is known about the genetic changes that are responsible. In the current study, we show that a 1.35 Mb locus on the X chromosome has a major effect on male 7,11-HD preference. Unfortunately, when this locus is divided, the effect is largely lost. We instead attempt to filter the 159 genes within this region using our newfound understanding of the neuronal underpinnings of this phenotype to identify and test candidate genes. We present the results of these tests, and discuss the difficulty of identifying the genetic architecture of behavioral traits and the potential of connecting these genetic changes to the neuronal modifications that elicit different behaviors.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1534/g3.119.400780"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "The Genetics of Male Pheromone Preference Difference Between Drosophila melanogaster and Drosophila simulans."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66043",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(OPENARCHIVES) Reactions of hydrogen with electronic materials are important for the operation of related devices. Here we use first-principles density-functional theory calculations to describe hydrogen reactions on pristine and defective graphene. We show that small hydrogen clusters on defect-free graphene are unstable against emission of hydrogen molecules and that the associated reaction energies and barriers have a subtle dependence on the type of the clusters. In contrast, chemisorption of hydrogen in the vicinity of graphene vacancies leads to progressively larger clusters of adatoms and, eventually, to formation of graphane. The results are relevant to the optimization of graphene- and graphane-based devices, as well to the creation of graphene-graphane hybrid systems. © 2012 Springer Science+Business Media, LLC.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "http://dspace.lib.ntua.gr/handle/123456789/29803"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Hydrogen uptake by graphene and nucleation of graphane"
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66050",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) In the present paper, we evaluated the implementation of a seed production system based on the exploitation of male sterility on coffee. We studied specifically the combination between CIR-SM01 and Marsellesa® (a Sarchimor line), which provides a hybrid population called Starmaya. We demonstrated that the establishment of seed garden under natural pollination is possible and produces a sufficient amount of hybrid seeds to be multiplied efficiently and economically. As expected for F1 hybrid, the performances of Starmaya are highly superior to conventional cultivars. However, we observed some heterogeneity on Starmaya cultivar in the field. We confirmed by genetic marker analysis that the off-types were partly related to the heterozygosity of the CIR-SM01 clone and could not be modified. Regarding the level of rust resistance of Starmaya cv., we saw that it could be improved if Marsellesa was more fully fixed genetically. If so, we should be able to decrease significantly the percentage of rust incidence of Starmaya from 15 to 5%, which would be quite acceptable at a commercial level. Starmaya represents the proof of concept for the mass propagation of Arabica F1 hybrid seeds using male sterility. Finally, we discuss the possibility to increase the number of hybrid varieties produced by seed, exploring some initiatives to identify male sterility markers to induce male sterility on any conventional cultivar. This would definitively open up the universe of known Arabica cultivars to be used in breeding new F1 hybrids.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.3389/fpls.2019.01344"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Hybrids", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Starmaya: The First Arabica F1 Coffee Hybrid Produced Using Genetic Male Sterility."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66073",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Defective interfering (DI) virus is simply defined as a spontaneously generated virus mutant from which a critical portion of the virus genome has been deleted. At least one essential gene of the virus is deleted, either in its entirety, or sufficiently to make it non-functional. The resulting DI genome is then defective for replication in the absence of the product(s) of the deleted gene(s), and its replication requires the presence of the complete functional virus genome to provide the missing functions. In addition to being defective DI virus suppresses production of the helper virus in co-infected cells, and this process of interference can readily be observed in cultured cells. In some cases, DI virus has been observed to attenuate disease in virus-infected animals. In this article, we review the properties of DI virus, potential mechanisms of interference and progress in using DI virus (in particular that derived from influenza A virus) as a novel type of antiviral agent.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1002/rmv.641"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Interfering Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Defective interfering viruses and their potential as antiviral agents."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66080",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Viruses frequently spread among cells or hosts in groups, with multiple viral genomes inside the same infectious unit. These collective infectious units can consist of multiple viral genomes inside the same virion, or multiple virions inside a larger structure such as a vesicle. Collective infectious units deliver multiple viral genomes to the same cell simultaneously, which can have important implications for viral pathogenesis, antiviral resistance, and social evolution. However, little is known about why some viruses transmit in collective infectious units, whereas others do not. We used a simple evolutionary approach to model the potential costs and benefits of transmitting in a collective infectious unit. We found that collective infectious units could be favoured if cells infected by multiple viral genomes were significantly more productive than cells infected by just one viral genome, and especially if there were also efficiency benefits to packaging multiple viral genomes inside the same infectious unit. We also found that if some viral sequences are defective, then collective infectious units could evolve to become very large, but that if these defective sequences interfered with wild-type virus replication, then collective infectious units were disfavoured.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1016/j.virusres.2019.03.013"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Interfering Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "The evolution of collective infectious units in viruses."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66087",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Defective interfering (DI) influenza viruses carry a large deletion in a gene segment that interferes with the replication of infectious virus; thus, such viruses have potential for antiviral therapy. However, because DI viruses cannot replicate autonomously without the aid of an infectious helper virus, clonal DI virus stocks that are not contaminated with helper virus have not yet been generated. To overcome this problem, we used reverse genetics to generate a clonal DI virus with a PB2 DI gene, amplified the clonal DI virus using a cell line stably expressing the PB2 protein, and confirmed its ability to interfere with infectious virus replication in vitro. Thus, our approach is suitable for obtaining purely clonal DI viruses, will contribute to the understanding of DI virus interference mechanisms and can be used to develop DI virus-based antivirals.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1111/1348-0421.12681"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Interfering Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Generation of a purely clonal defective interfering influenza virus."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66094",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) A growing number of studies report that viruses can spread in groups in so-called collective infectious units. By increasing the cellular multiplicity of infection, collective dispersal may allow for social-like interactions, such as cooperation or cheating. Yet, little is known about how such interactions evolve. In previous work with vesicular stomatitis virus, we showed that virion aggregation accelerates early infection stages in most cell types, providing a short-term fitness benefit to the virus. Here, we examine the effects of virion aggregation over several infection cycles. Flow cytometry, deep sequencing, infectivity assays, reverse transcription-quantitative PCR, and electron microscopy revealed that virion aggregation rapidly promotes the emergence of defective interfering particles. Therefore, virion aggregation provides immediate fitness benefits to the virus but incurs fitness costs after a few viral generations. This suggests that an optimal strategy for the virus is to undergo virion aggregation only episodically, for instance, during interhost transmission.IMPORTANCE Recent insights have revealed that viruses use a highly diverse set of strategies to release multiple viral genomes into the same target cells, allowing the emergence of beneficial, but also detrimental, interactions among viruses inside infected cells. This has prompted interest among microbial ecologists and evolutionary biologists in studying how collective dispersal impacts the outcome of viral infections. Here, we have used vesicular stomatitis virus as a model system to study the evolutionary implications of collective dissemination mediated by viral aggregates, since this virus can spontaneously aggregate in the presence of saliva. We find that saliva-driven aggregation has a dual effect on viral fitness; whereas aggregation tends to increase infectivity in the very short term, virion aggregates are highly susceptible to invasion by noncooperative defective variants after a few viral generations.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1128/mBio.02156-19"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Interfering Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Collective Viral Spread Mediated by Virion Aggregates Promotes the Evolution of Defective Interfering Particles."
+    }, {
+      "@id" : "http://lom.hpclab.ceid.upatras.gr#N66101",
+      "@type" : "owl:NamedIndividual",
+      "http://ltsc.ieee.org/xsd/LOM/description" : "(PUBMED) Influenza A viruses (IAVs) encode their genome across eight, negative sense RNA segments. During viral assembly, the failure to package all eight segments, or packaging a mutated segment, renders the resulting virion incompletely infectious. It is known that the accumulation of these defective particles can limit viral disease by interfering with the spread of fully infectious particles. In order to harness this phenomenon therapeutically, we defined which viral packaging signals were amenable to duplication and developed a viral genetic platform which produced replication competent IAVs that require up to two additional artificial genome segments for full infectivity. The modified and artificial genome segments propagated by this approach are capable of acting as \"decoy\" segments that, when packaged by coinfecting wild-type viruses, lead to the production of non-infectious viral particles. Although IAVs which require 10 genomic segments for full infectivity are able to replicate themselves and spread in vivo, their genomic modifications render them avirulent in mice. Administration of these viruses, both prophylactically and therapeutically, was able to rescue animals from a lethal influenza virus challenge. Together, our results show that replicating IAVs designed to propagate and spread defective genomic segments represent a potent anti-influenza biological therapy that can target the conserved process of particle assembly to limit viral disease.",
+      "http://ltsc.ieee.org/xsd/LOM/identifier" : {
+        "@type" : "xsd:anyURI",
+        "@value" : "https://doi.org/10.1371/journal.ppat.1008098"
+      },
+      "http://ltsc.ieee.org/xsd/LOM/keyword" : [ "Defective Interfering Viruses", {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D003673"
+      }, {
+        "@id" : "http://www.nlm.nih.gov/mesh/2006#D014780"
+      } ],
+      "http://ltsc.ieee.org/xsd/LOM/title" : "Influenza viruses that require 10 genomic segments as antiviral therapeutics."
+    },  {
+      "@id" : "http://ltsc.ieee.org/xsd/LOM/description",
+      "@type" : "owl:AnnotationProperty"
+    }, {
+      "@id" : "http://ltsc.ieee.org/xsd/LOM/identifier",
+      "@type" : "owl:AnnotationProperty"
+    }, {
+      "@id" : "http://ltsc.ieee.org/xsd/LOM/keyword",
+      "@type" : "owl:AnnotationProperty"
+    }, {
+      "@id" : "http://ltsc.ieee.org/xsd/LOM/title",
+      "@type" : "owl:AnnotationProperty"
+    }, {
+      "@id" : "xsd:anyURI",
+      "@type" : "rdfs:Datatype"
+    } ]
+  }

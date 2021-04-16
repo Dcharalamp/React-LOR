@@ -1,0 +1,131 @@
+#############FILE_UPLOAD_CASES###################
+TODO:
+1) Functionality in progress bar
+2) check for correct file(needs to be json)
+
+#################CASE 1#########################
+CASE #1: FILE COMPLETELY OVERWRITES THE DB
+################################################
+db.ontologies.remove({});
+let ontologies = [];
+
+ontologies = currentFile[0];
+for(i=0; i<ontologies.length; i++){
+    axios.post(URL, ontologies[i])
+}
+###############CASE 2############################
+FILTER FOR DUPES, THEN APPEND LEGIT AT DB
+this case just filters out the dupes, rest of data progressing
+#################################################
+let ontologies = [];
+ontologies = currentFile[0];
+for(i=0; i<ontologies.length; i++){
+    const flag = await axios.post(Duped_Ontology, ontologies[i])
+    //this returns a boolean whether the trying-to-be-submitted ontology already exists in DB or not
+    if(flag){
+    axios.post(URL, ontologies[i])
+    }
+    else{
+        setMessage("Ontology with ID {ontologies[i].id} already exists in db")
+    }
+}
+##################CASE 3#########################
+FILTER FOR DUPES, IF THERE'S ONE, ABORT UPLOAD
+NOT RECOMMENDED, TOO MANY ITERATIONS
+#################################################
+
+let ontologies = [];
+ontologies = currentFile[0];
+const [duped,setDuped] = useState(false);
+for(i=0; i<ontologies.length; i++){
+    const flag = await axios.post(Duped_Ontology, ontologies[i]);
+    if(!flag){
+        setDuped(true);
+        break;
+    }
+}
+if(!duped){
+for(i=0; i<ontologies.length; i++){
+    axios.post
+
+}
+} else {
+    setMessage("ontology has duped entries, try again")
+    setDuped(false)
+}
+
+#################################################
+
+
+<Link to="/" style={{textDecoration:'none'}}><h1 className="title"onClick={window.scrollTo(0, 0)}>Ψηφιακή Βιβλιοθήκη Μαθησιακών Οντολογιών</h1></Link>
+
+
+const doThis() => {
+    history.push("/");
+    window.scrollTo(0, 0)
+}
+<h1 className="title" role="button" onClick=doThis()></h1>
+//With this method, we had an auto-redirection on home page on booting up the page(if logged in)
+//But, once the button was clicked, you couldnt click again to redirect yourself again to home page(eg.via Ontregister page )
+//Maybe reset button state somehow??
+
+
+
+
+#######################################################################
+
+
+And the last thing is to add the cors functionality to app.js, usually before session part but since 
+this app doesn’t have users, we can add it before routes middleware:
+
+// allow access to the API from different domains/origins
+const response = await axios.get(url, {
+            headers: {
+                'Content-type': 'application/rdf+xml',
+                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                'mode': 'no-cors'
+                
+            }
+        }
+
+
+############################################################################
+
+
+const response = await fetch(url, {
+            
+            headers: {
+              "Content-type": "application/xml",
+              "X-Content-Type-Options": "nosniff"
+            }
+        });
+        const newres = response.text();
+        console.log(newres);
+        console.log(response.headers.get('Content-Type'));
+        console.log(response);
+        console.log(response.data);
+    
+    ##########################################################################
+const xml1 = new XMLParser().parseFromString(data);   
+                console.log(xml1);
+                const x = xml1.getElementsByTagName('owl:NamedIndividual');
+                console.log(x[0].getAttributeValue("rdf:ID"));
+
+
+
+
+#######################################################
+
+
+parseString(data, function(err, result) {
+                    //console.log(util.inspect(result, false, null));
+                    console.log(result);
+                    
+                    const k =JSON.stringify(result);
+                    let i = [];
+                    //console.log(k);
+                    setP(k);
+                    //console.log(p);
+
+                })

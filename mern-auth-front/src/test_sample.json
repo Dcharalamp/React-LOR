@@ -1,0 +1,8 @@
+{
+	"id": "N65579",
+	"title": "One-dimensional virus transport in porous media with time-dependent inactivation rate coefficients",
+	"description": "(OPENARCHIVES) A model for virus transport in one-dimensional, homogeneous, saturated\nporous media is developed, accounting for virus sorption and inactivation of liquid phase\nand adsorbed viruses with different time dependent rate coefficients. The virus inactivation\nprocess is represented by a pseudo first-order rate expression. The pseudo first-order\napproximation is shown to simulate available experimental data from three virus\ninactivation batch studies better than the frequently employed constant rate inactivation\nmodel. Model simulations indicated that the pseudo first-order approximation, compared\nto the constant inactivation, leads to extended survival of viruses and, consequently, more\ndistant migration. Results from a parameter sensitivity analysis demonstrated that\nestimation of pseudo first-order inactivation rate coefficients from field observations\nrequires data collection near the source of virus contamination during initial stages of\nvirus transport.",
+    "identifier":"http://purl.tuc.gr/dl/dias/6DBD0025-8BE5-4818-BBAA-6DF29F0B540610.1029/96WR01496",
+	"keyword": "viruses"	
+	
+}

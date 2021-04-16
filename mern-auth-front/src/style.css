@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+
+
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} /**this resets the above parameters globally **/
+
+a { /** links styling **/ 
+    color: blue;
+    text-decoration: unset;
+}
+
+ul { /** unorder lists styling **/
+    margin-left: 1.5rem; /** rem=relative to size of root element **/
+    list-style: none;/** no bullets **/
+}
+
+button,
+input [type="submit"] {
+border: none;
+background: none;
+color: unset;
+cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 1em 0; /** Relative to the font-size of the element (2em means 2 times the size of the current font) **/
+}
+
+/* GENERAL STYLING */
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: url("C:\Users\DIMITRIS\Desktop\CEID Files\project\mern-auth-front\src\papp.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /*covers the whole element*/
+    background-attachment: fixed; /*image is "stuck" on scrolling*/
+    
+}
+
+
+
+/* HEADER STYLING */
+#header {
+    height: 50px;
+    background-color: #c01212;
+    display: flex; /*all in same line*/
+    align-items: center;
+    justify-content: space-between; /*this puts as much space between items as possible */ 
+
+
+}
+#header .title {
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    
+}
+
+.title{
+    font-size: 20px;
+   
+}
+
+
+/*Popup styling */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-newToggle {
+    background-color: rgb(241, 229, 57);
+    color: black;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-left: 8px;
+}
+
+
+.search-btn {
+    background-color: #217afa;
+    padding: 3px;
+    padding-left: 5px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    
+}
+
+.search-btn:focus{
+    outline:none;
+}
+
+.go-to-top {
+    
+    position: fixed; 
+   bottom: 40px;
+   right: 10px;
+   font-size: 3rem;
+   z-index: 99;
+   cursor: pointer;
+   color: green;
+   
+   
+}
+.go-to-top:focus {
+    outline: none;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: inline;
+}
+
+.search-container {
+    display: flex;
+    
+}
+
+.spinner {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.checkbox-style{
+    margin-top: 6px;
+}
+
+.label {
+    font-size: 15px;
+    margin-left: 7px;
+}
+
+input[type="text"]
+{
+    font-size:22px;
+}
+
+.search-bar{
+    width:180px;
+    height: 40px;
+    background-color:rgb(242, 241, 249);
+    border:none;
+    padding-top: 10px;
+    
+}
+
+.btn-newToggle:hover {
+    background-color: rgb(0, 255, 0);
+}
+
+.popup-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid blue;
+
+}
+
+.popup-inner .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color:red;
+    padding-left: 8px;
+    padding-right: 8px; 
+    border: 1px solid rgba(0,0,0,0.2);
+    color: white;
+}
+
+.popup-inner .btn-send {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    background-color: rgb(72, 224, 26);
+    color: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+}
+
+.btn-cross {
+    background-color: grey;
+    color: white;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 3px;
+}
+
+.hidden_button1{
+    color: red;
+    background-color: rgb(231, 226, 226);
+    padding: 3.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 7px;
+    border-radius: 8px;
+}
+
+.hidden_button2 {
+    color: green;
+    background-color: rgb(231, 226, 226);
+    padding: 3.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 2px;
+    border-radius: 8px;
+}
+
+.page-link {
+    
+}
+
+.page-link:target {
+    background-color: rgb(142, 240, 243);
+}
+
+:target {
+    background-color: rgb(142, 240, 243);
+}
+
+.page-link[tabIndex]:focus {
+    background-color: rgb(171, 226, 228);
+    outline: none;
+}
+
+.truncated {
+    background-color: grey;
+    color: white;
+    padding: 4px;
+    margin-left: 7px;
+    border: solid 1px black;
+    border-radius: 8px;
+    cursor: pointer;
+    
+}
+
+
+
+#header .auth-option {
+    display: flex;
+    height: 100%;
+}
+
+
+#header .auth-option button {
+    padding: 0 1rem;
+    background-color: #880c0c;
+    color: white;
+    font-size: 1.1rem;
+}
+
+#header .auth-option button:hover {
+    background-color: tomato;
+
+}
+
+
+
+.container {
+    width: 1000px;
+    height: 735px;
+    
+    
+    
+}
+
+
+.test {
+    float: right;
+}
+
+.page{
+    padding: 1rem;
+    background-color: white;
+    position: absolute;
+    left: 40%;
+    top: 25%;
+    border: solid 1px turquoise;
+    border-radius: 20px;
+   
+    
+   
+}
+
+.ontRpage{
+    padding: 1rem;
+    background-color: white;
+    position: absolute;
+    left: 40%;
+    top: 25%;
+    border: solid 1px turquoise;
+    border-radius: 20px;
+}
+
+.MainPage {
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    padding: 17px;
+}
+
+
+
+.options {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tableHead { /* If needed for column titles to be aligned*/
+    text-align: center;
+}
+
+.form label, .form input{
+    display: block;
+
+}
+
+.form input {
+    margin-bottom: 1rem;
+}
+
+.sorting_buttons {
+    border: 0.5px solid rgb(131, 131, 209);
+    border-radius: 5px;
+    padding-left: 8px;
+    margin-left: 5px;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.form label {
+    margin-bottom: 0.2rem;
+}
+
+h5 {
+    color: white;
+    padding-right: 10px;
+    margin-top: 13px;
+    
+}
+
+.box {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"]
+ {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.3rem;
+    border: 1px solid #907676;
+    
+    border-radius: 8px;
+}
+
+.form input:focus {
+    border:1px solid rgb(31, 143, 218);
+    outline: none;
+    box-shadow: inset 0px 0px 5px rgba(38, 142, 228, 0.5); 
+}
+
+.form input[type="submit"] {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid black;
+    background-color: rgb(176, 178, 241);
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+.form-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa {
+    margin-right: 10px;
+}
+
+
+/*error handling styling*/
+
+.error-notice {
+    padding: 0.5rem;
+    border: 1px solid black;
+    background-color: black;
+    border-radius: 8px;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.error-notice span {
+    color: yellow;
+}
+
+.error-msg {
+    color: yellow;
+}
+
+.error-notice button{
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+
+
+
+@media screen and (max-width: 576px) { /* mobile port styling*/
+    #header {
+        width: 1000px;
+
+    }
+
+
+    #header .title {
+        font-size: 1.2rem;
+        
+
+    }
+    #header .auth-option button {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+    .page {
+        top: 60%;
+        left: 70%;
+    }
+
+    .MainPage {
+        width: 900px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width:770px) { 
+
+    .ontRpage {
+        left: 20%;
+        top: 20%;
+        
+    }
+    .form input[type="submit"] {
+        margin-left: 180px;
+    }
+
+}
+
+
