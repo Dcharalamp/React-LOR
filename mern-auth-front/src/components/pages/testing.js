@@ -128,6 +128,7 @@ export default function Testing() {
          }
 
          const exUpdateInput2 = async (input) => {
+             console.log("hi");
         
             if(input){
                 let x = [];
@@ -393,7 +394,7 @@ export default function Testing() {
         return(
             <>
             <button class="btn-cross" onClick={(e)=> toggleCross()}>+</button>
-            <input type="text" hidden={pressC} placeholder="insert new keyword..." onChange={(e) => setNewKeywordtoBeAdded(e.target.value)}></input> <button class="hidden_button2" hidden={pressC} onClick={(e) => insertGivenKey(givenID, givenTitle, givenDescription, givenIdentifier, givenKeys, newKeywordtoBeAdded, currentPage)}>✔</button>             
+            <input style={BarStyling} hidden={pressC} placeholder="insert new keyword..." onChange={(e) => setNewKeywordtoBeAdded(e.target.value)}></input> <button class="hidden_button2" hidden={pressC} onClick={(e) => insertGivenKey(givenID, givenTitle, givenDescription, givenIdentifier, givenKeys, newKeywordtoBeAdded, currentPage)}>✔</button>             
         </>
         );
 
