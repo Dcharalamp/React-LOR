@@ -336,6 +336,10 @@ input[type="text"]
     margin-right: auto;
 }
 
+.keys {
+    list-style-type: none; /*remove bullets from li*/
+}
+
 .tableHead { /* If needed for column titles to be aligned*/
     text-align: center;
 }

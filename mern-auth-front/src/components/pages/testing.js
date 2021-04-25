@@ -7,6 +7,8 @@ import * as f from "react-bootstrap";
 import Loader from "react-loader-spinner";
 
 
+
+
 import "../../style.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"; //css for spinner
 
@@ -329,12 +331,23 @@ export default function Testing() {
                 
                 const base = xmlDoc.getElementsByTagName("owl:NamedIndividual");
                 for (let i = 0; i < base.length; i++) {
+                    let k = [];
+                    const count = base[i].getElementsByTagName("lom:keyword");
+                    for (let j = 0; j < count.length; j++) {
+                        if(base[i].getElementsByTagName("lom:keyword")[j].childNodes[0] === undefined) {
+                            k.push(base[i].getElementsByTagName("lom:keyword")[j].getAttribute("rdf:resource"));
+                        }else{
+                            k.push(base[i].getElementsByTagName("lom:keyword")[j].childNodes[0].nodeValue);
+                        }
+                    } 
                     const element = {
                         id: base[i].getAttribute("rdf:ID"),
                         title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
                         description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
                         identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
-                        keyword: base[i].getElementsByTagName("lom:keyword")[0].childNodes[0].nodeValue
+                        keyword: k
+                        
+                         
                     };
                 
                     newposts.push(element);   
@@ -445,6 +458,9 @@ export default function Testing() {
         setCurrentPage(currentPage -1); //manually triggering useEffect
         setCurrentPage(currentPage);   
         }
+
+        
+        
             
             return( 
                 <ul>
@@ -456,26 +472,28 @@ export default function Testing() {
                
             );
           
-          
         
     }
     
     function AddToBase({par}) {
         const [toggle,setToggle] = useState(false);
         const id = par.id;
-        const keyword = [par.keyword];
-        //const k = keyword.split(",");
+        const [keyword,setKeyword] = useState([par.keyword]);
+        const k = par.keyword.toString().split(",");
+        const [tempKeyword,setTempKeyword] = useState([k]); //helper state
         const title = par.title;
         const description = par.description;
         const identifier = par.identifier;
         const newOntology = {id, title, description, identifier, keyword};
+        const [checked,setChecked] = useState(true);
         
 
         
 
         const UpdateBase = async(id,title,description,identifier,keyword) => {
+            const newOntology = {id, title, description, identifier, keyword};
             try{
-                const newOntology = {id, title, description, identifier, keyword};
+                
                 await axios.post("http://localhost:5000/ont/ontologySubmit", newOntology);
 
             }catch(err){
@@ -488,14 +506,40 @@ export default function Testing() {
             setPostsNotDefault(postsNotDefault.concat(newOntology));
         }
 
+        const handleChecking = (e) => {
+            setChecked(e.target.checked);
+            if(!checked){ //if we re-check, we add to array
+                setTempKeyword(tempKeyword.concat(e.target.value));
+            }else{//uncheck, we remove it from array    
+                const filtered = k.filter(kk => kk!==e.target.value);
+                setTempKeyword(filtered);
+
+            }
+            
+
+        }
+
         return(toggle) ? (
             <div className="popup">
             <div className="popup-inner">
                 <button className="close-btn" onClick={() => setToggle(false)}>x</button>
                 
-                <h6>Are you sure you want to add this Ontology to the DB?</h6>
+                <h6>Do you want to do any changes to the keyword tags?</h6>
+                {k.map(k => (
+                    <li className="keys">
+                    <input
+                    className="checkbox-style"
+                    name="example_1"
+                    value={k}
+                    defaultChecked={checked}
+                    type="checkbox"
+                    onChange={e => {
+                        handleChecking(e); 
+                      }}/><label className="label">{k}</label>
+                    </li>
+                      ))}
                 
-                <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,keyword)}>Add</button>
+                <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,tempKeyword)}>Add</button>
 
             </div>
         </div>
