@@ -336,6 +336,22 @@ input[type="text"]
     margin-right: auto;
 }
 
+.box-memo {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    background-color: #50C878;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.text-memo {
+    margin-left: 8px;
+    margin-top: -3px;
+}
 .keys {
     list-style-type: none; /*remove bullets from li*/
 }

@@ -27,7 +27,7 @@ export default function Testing() {
     const [error, setError] = useState(); //error handling
     const [ext,setExt] = useState(''); //external API requests from Okeanos
     const [n,setN] = useState([]); //the results of the fetched API
-    const [nn, setNN] = useState([]); //helper for searching
+    const [nn, setNN] = useState([]); //helper for searching, inits(??)
     const [p,setP] = useState(true); //state for toggling table
     const [loadingFetched,setLoadingFetched] = useState(false); //state for loading indicator when fetching from Okeanos
     //states for fetched data from Okeanos and pagination
@@ -117,7 +117,7 @@ export default function Testing() {
             let x = [];
             
             const filtered = nn.filter(post => { 
-                 return post.keyword.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                 return post.keyword[0].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
     
             })
             setN(filtered); //update state  
@@ -331,6 +331,16 @@ export default function Testing() {
                 
                 const base = xmlDoc.getElementsByTagName("owl:NamedIndividual");
                 for (let i = 0; i < base.length; i++) {
+                    let match = false;
+                    let abort = true;
+                    for (let l = 0; l < posts.length && abort; l++) {
+                        if(posts[l].title == base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue
+                        && posts[l].description == base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue
+                        && posts[l].identifier == base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue) {
+                            match = true;
+                            abort = false;
+                        }  
+                    }
                     let k = [];
                     const count = base[i].getElementsByTagName("lom:keyword");
                     for (let j = 0; j < count.length; j++) {
@@ -345,9 +355,8 @@ export default function Testing() {
                         title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
                         description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
                         identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
-                        keyword: k
-                        
-                         
+                        keyword: k,
+                        exists: match    
                     };
                 
                     newposts.push(element);   
@@ -474,23 +483,47 @@ export default function Testing() {
           
         
     }
+
+    function ExShowKeywords({children}) { //show keywords
+        const givenKeys = children.keyword;
+        const times = givenKeys.length;
+        const arr = [];
+        for (let index = 0; index < times; index++) {
+            arr.push(givenKeys[index]);
+            
+        }
+            
+            return( 
+                <ul>
+            {arr.map(item => {
+                
+                return <li>{item}</li> 
+            })}
+        </ul>
+               
+            );
+          
+        
+    }
     
     function AddToBase({par}) {
         const [toggle,setToggle] = useState(false);
         const id = par.id;
         const [keyword,setKeyword] = useState([par.keyword]);
-        const k = par.keyword.toString().split(",");
-        const [tempKeyword,setTempKeyword] = useState([k]); //helper state
+        const [k,setK] = useState(par.keyword.toString().split(","));
+        const [tempKeyword,setTempKeyword] = useState(k); //helper state
         const title = par.title;
         const description = par.description;
         const identifier = par.identifier;
         const newOntology = {id, title, description, identifier, keyword};
         const [checked,setChecked] = useState(true);
-        
+        const [newK, setNewK] = useState('');
 
         
 
-        const UpdateBase = async(id,title,description,identifier,keyword) => {
+        
+
+        const UpdateBase = async(id,title,description,identifier,keyword) => { 
             const newOntology = {id, title, description, identifier, keyword};
             try{
                 
@@ -504,6 +537,23 @@ export default function Testing() {
             setToggle(false);
             setPosts(posts.concat(newOntology)); 
             setPostsNotDefault(postsNotDefault.concat(newOntology));
+            let abort=true;
+            for (let i = 0; i < nn.length && abort; i++) {
+                if(n[i].id== id){
+                    n[i].exists = true;
+                    nn[i].exists = true;
+                    abort = false;
+
+                }
+                
+            }
+        }
+
+        const addKeyword = (newK) => { 
+            console.log("entry, completed!");
+            setK(k.concat(newK));
+            setTempKeyword(tempKeyword.concat(newK));
+            console.log(k);
         }
 
         const handleChecking = (e) => {
@@ -519,25 +569,70 @@ export default function Testing() {
 
         }
 
+        if(par.exists){
+            return(
+                <button class="btn-newToggle" onClick={(e) =>setToggle(true)}>DB</button>
+            )
+
+        }else{
+            if(toggle){
+                return (
+                    <div className="popup">
+            <div className="popup-inner">
+                <button className="close-btn" onClick={() => setToggle(false)}>x</button>
+                
+                <h6>Do you want to do any changes to the keyword tags?</h6>
+                {k.map(kkk => (
+                    <li className="keys">
+                    <input
+                    className="checkbox-style"
+                    name="example_1"
+                    value={kkk}
+                    defaultChecked={checked}
+                    type="checkbox"
+                    onChange={e => {
+                        handleChecking(e); 
+                      }}/><label className="label">{kkk}</label>
+                    </li>
+                      ))}
+                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button onClick={(e) => addKeyword(newK)}>+</button>
+                
+                <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,tempKeyword)}>Add</button>
+
+            </div>
+        </div>
+                )
+
+            }else{
+                return (
+                    <button class="btn-newToggle" onClick={(e) =>setToggle(true)}>DB</button>
+                )
+
+            }
+        }
+
+        /*
+
         return(toggle) ? (
             <div className="popup">
             <div className="popup-inner">
                 <button className="close-btn" onClick={() => setToggle(false)}>x</button>
                 
                 <h6>Do you want to do any changes to the keyword tags?</h6>
-                {k.map(k => (
+                {k.map(kkk => (
                     <li className="keys">
                     <input
                     className="checkbox-style"
                     name="example_1"
-                    value={k}
+                    value={kkk}
                     defaultChecked={checked}
                     type="checkbox"
                     onChange={e => {
                         handleChecking(e); 
-                      }}/><label className="label">{k}</label>
+                      }}/><label className="label">{kkk}</label>
                     </li>
                       ))}
+                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button onClick={(e) => addKeyword(newK)}>+</button>
                 
                 <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,tempKeyword)}>Add</button>
 
@@ -546,7 +641,7 @@ export default function Testing() {
 
         ) : <button class="btn-newToggle" onClick={(e) =>setToggle(true)}>DB</button>
         ;
-
+                 */
     }
 
     
@@ -681,7 +776,12 @@ export default function Testing() {
             />
             </div>
             <div className="newMain" hidden={p}>
+                
             <p>Results found: {n.length}</p>
+            <div className="wrapper">
+            <div className="box-memo"></div><p className="text-memo">Already exists in DB</p>
+            </div>
+            
             <f.Table table table-bordered table-hover table-sm responsive> 
             
             <thead>
@@ -708,13 +808,13 @@ export default function Testing() {
                 
                 
                 
-                <tr> 
+                <tr style={post.exists ? {background:"#50C878"}: {}}> 
                       
                     <td >{post.id}</td>
                     <td>{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
                     <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
-                    <td>{post.keyword}</td>
+                    <td><ExShowKeywords children={post}></ExShowKeywords></td>
                         
                     <td style={OptionStyling}>
                         <div className="options">
