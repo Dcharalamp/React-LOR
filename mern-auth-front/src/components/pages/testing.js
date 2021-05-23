@@ -5,6 +5,7 @@ import ScrollButton from "../misc/ScrollButton";
 import axios from 'axios';
 import * as f from "react-bootstrap";
 import Loader from "react-loader-spinner";
+import ErrorNotice from "../misc/ErrorNotice";
 
 
 
@@ -321,7 +322,7 @@ export default function Testing() {
 
     const DoSomething = async () => { //fetching data from external API 
         
-        const url = `http://snf-630087.vm.okeanos.grnet.gr:8888/SemanticMiddleware-1.2/results/?q=${ext}`;
+        const url = `http://snf-630087.vm.okeanos.grnet.gr:8888/SemanticMiddleware-1.3/results?q=${ext}&validate=true`;
         setLoadingFetched(true);
         await fetch(url)
             .then(res => res.text())
@@ -330,36 +331,41 @@ export default function Testing() {
                 const xmlDoc = parser.parseFromString(data,"text/xml");
                 
                 const base = xmlDoc.getElementsByTagName("owl:NamedIndividual");
-                for (let i = 0; i < base.length; i++) {
-                    let match = false;
-                    let abort = true;
-                    for (let l = 0; l < posts.length && abort; l++) {
-                        if(posts[l].title == base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue
-                        && posts[l].description == base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue
-                        && posts[l].identifier == base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue) {
-                            match = true;
-                            abort = false;
-                        }  
-                    }
-                    let k = [];
-                    const count = base[i].getElementsByTagName("lom:keyword");
-                    for (let j = 0; j < count.length; j++) {
-                        if(base[i].getElementsByTagName("lom:keyword")[j].childNodes[0] === undefined) {
-                            k.push(base[i].getElementsByTagName("lom:keyword")[j].getAttribute("rdf:resource"));
-                        }else{
-                            k.push(base[i].getElementsByTagName("lom:keyword")[j].childNodes[0].nodeValue);
+                for (let i = 0; i< base.length; i++) {
+                    //TODO SCORES   
+                    let k =[];
+                    const result = base[i].hasAttribute("rdf:ID"); 
+                    if(result) {
+                        let match = false;
+                        let abort = true;
+                        let indexOfDupePost = -1;
+                        for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
+                            if(posts[l].title == base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue
+                            && posts[l].description == base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue
+                            && posts[l].identifier == base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue) {
+                                match = true;
+                                indexOfDupePost = l; //index of dupe post
+                                abort = false;
+                            }  
                         }
+
+                        const count = base[i].getElementsByTagName("lom:keyword");
+                        for (let j = 0; j < count.length; j++) { //get all keywords
+                            k.push(count[j].getElementsByTagName("rdfs:label")[0].childNodes[0].nodeValue);  
+                        }
+                        console.log(k);  
+                        const element = {
+                            id: base[i].getAttribute("rdf:ID"),
+                            title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
+                            description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
+                            identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
+                            keyword: k,
+                            exists: match,
+                            dupeIndex: indexOfDupePost    
+                        }; 
+                        newposts.push(element);
                     } 
-                    const element = {
-                        id: base[i].getAttribute("rdf:ID"),
-                        title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
-                        description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
-                        identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
-                        keyword: k,
-                        exists: match    
-                    };
-                
-                    newposts.push(element);   
+                                   
                 }
                  
             })
@@ -475,7 +481,7 @@ export default function Testing() {
                 <ul>
             {arr.map(item => {
                 
-                return <li>{item}<button class="hidden_button1" onClick={(e) => deleteGivenKey(givenID, givenTitle, givenDescription, givenIdentifier, givenKeys, item, currentPage)}>🚫</button></li> //takes the item as param, in order to delete it
+                return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span><button class="hidden_button1" onClick={(e) => deleteGivenKey(givenID, givenTitle, givenDescription, givenIdentifier, givenKeys, item, currentPage)}>🚫</button></div></li> //takes the item as param, in order to delete it
             })}
         </ul>
                
@@ -487,21 +493,61 @@ export default function Testing() {
     function ExShowKeywords({children}) { //show keywords
         const givenKeys = children.keyword;
         const times = givenKeys.length;
-        const arr = [];
+        let dupek = [];
+        let doublek = [];
+        if(children.dupeIndex > 0){
+            const keywordsFromDB = posts[children.dupeIndex].keyword;
+            for (let index = 0; index < keywordsFromDB.length; index++) {
+                dupek.push(keywordsFromDB[index]);
+                
+            }
+        }
+        
+        let arr = [];
+        let arrI = [];
+        
         for (let index = 0; index < times; index++) {
-            arr.push(givenKeys[index]);
+            arr.push(givenKeys[index]); 
+            arrI.push(givenKeys[index]); //initial, helps for cases
             
         }
-            
+        arrI = arrI.filter((e) => !dupek.includes(e)); // Ǝ Okeano, !Ǝ DB
+        doublek = dupek.filter((e) => arr.includes(e));// Ǝ Okeano & Ǝ DB
+        dupek = dupek.filter((e) => !arr.includes(e)); // Ǝ DB, !Ǝ Okeano
+
+            if(children.dupeIndex < 0 ){
             return( 
                 <ul>
-            {arr.map(item => {
+            {arrI.map(item => {
                 
-                return <li>{item}</li> 
+                return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
             })}
         </ul>
                
-            );
+            );}
+            else{
+                return( 
+                    <>
+                    <ul>
+                {arrI.map(item => {
+                    
+                    return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+                })}
+            </ul>
+            <ul>
+                {dupek.map(item =>{
+                    return <li><div className="wrapper"><div className="arrow-left2"></div><span className="label3">{item}</span></div></li>
+                })}
+            </ul>
+            <ul>
+                {doublek.map(item =>{
+                    return <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
+                })}
+            </ul>
+            </>
+                   
+                );
+            }
           
         
     }
@@ -518,6 +564,19 @@ export default function Testing() {
         const newOntology = {id, title, description, identifier, keyword};
         const [checked,setChecked] = useState(true);
         const [newK, setNewK] = useState('');
+        //in case of dupe object
+        let dupek = [];
+        let idFromDupedObj = '';
+        if(par.dupeIndex > 0){
+            idFromDupedObj = posts[par.dupeIndex].id;
+            const keywordsFromDB = posts[par.dupeIndex].keyword;
+            for (let index = 0; index < keywordsFromDB.length; index++) {
+                dupek.push(keywordsFromDB[index]);
+                
+            }
+        } 
+        dupek = dupek.filter((e) => !k.includes(e)); // Ǝ DB, !Ǝ Okeano
+        const [updateKeywords, setUpdateKeywords] = useState(k.concat(dupek));
 
         
 
@@ -554,15 +613,51 @@ export default function Testing() {
             setK(k.concat(newK));
             setTempKeyword(tempKeyword.concat(newK));
             console.log(k);
+            setUpdateKeywords(updateKeywords.concat(newK));
+            console.log(updateKeywords);
+        }
+
+        const UpdateObject = async (id,title,description,identifier,keyword) => {
+            try{
+                
+                const res = await axios.put("http://localhost:5000/ont/ontologyUpdate/", 
+                    {
+                        id: id,
+                        title: title,
+                        description: description,
+                        identifier: identifier,
+                        keyword: keyword
+    
+                    }, );
+               
+                
+            } 
+            catch(err) { //if there's an error we catch it
+            err.response.data.msg && setError(err.response.data.msg); //if both are true, error state is update with the error message that shows up
+        }
+        setToggle(false);
+        let p = [...posts];
+        let mutate = {...p[par.dupeIndex]};  
+        mutate.keyword = keyword;
+        p[par.dupeIndex] = mutate;
+        setPosts(p); 
+        setPostsNotDefault(p);
+
+        
+
         }
 
         const handleChecking = (e) => {
             setChecked(e.target.checked);
             if(!checked){ //if we re-check, we add to array
                 setTempKeyword(tempKeyword.concat(e.target.value));
+                setUpdateKeywords(updateKeywords.concat(e.target.value));
             }else{//uncheck, we remove it from array    
                 const filtered = k.filter(kk => kk!==e.target.value);
                 setTempKeyword(filtered);
+                //dupe case
+                const newfiltered = updateKeywords.filter(ll => ll!==e.target.value);
+                setUpdateKeywords(newfiltered);
 
             }
             
@@ -570,9 +665,61 @@ export default function Testing() {
         }
 
         if(par.exists){
+            if(toggle){
+                return(
+                    <div className="popup">
+            <div className="popup-inner">
+                <button className="close-btn" onClick={() => setToggle(false)}>x</button>
+                
+                <h6>Object already exists in DataBase, do you want to do any changes to the keywords?</h6>
+                <div className="row">
+                    <div className="column">
+                    <p>Keywords in DB:</p>
+                {dupek.map(kkk => (
+                    <li className="keys">
+                    <input
+                    className="checkbox-style"
+                    name="example_1"
+                    value={kkk}
+                    defaultChecked={checked}
+                    type="checkbox"
+                    onChange={e => {
+                        handleChecking(e); 
+                      }}/><label className="label">{kkk}</label>
+                    </li>
+                      ))}
+
+                    </div>
+                    <div className="column">
+                    <p>Keywords from online repository:</p>
+                {k.map(kkk => (
+                    <li className="keys">
+                    <input
+                    className="checkbox-style"
+                    name="example_1"
+                    value={kkk}
+                    defaultChecked={checked}
+                    type="checkbox"
+                    onChange={e => {
+                        handleChecking(e); 
+                      }}/><label className="label">{kkk}</label>
+                    </li>
+                      ))}
+                    </div>
+                    </div> 
+
+                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button className="btn-cross" onClick={(e) => addKeyword(newK)}>+</button>
+                
+                <button className="btn-send" onClick={(e) => UpdateObject(idFromDupedObj,title,description,identifier,updateKeywords)}>Update</button>
+
+            </div>
+        </div>
+                )
+            }
+            else{
             return(
                 <button class="btn-newToggle" onClick={(e) =>setToggle(true)}>DB</button>
-            )
+            )}
 
         }else{
             if(toggle){
@@ -595,7 +742,7 @@ export default function Testing() {
                       }}/><label className="label">{kkk}</label>
                     </li>
                       ))}
-                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button onClick={(e) => addKeyword(newK)}>+</button>
+                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button className="btn-cross" onClick={(e) => addKeyword(newK)}>+</button>
                 
                 <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,tempKeyword)}>Add</button>
 
@@ -611,37 +758,7 @@ export default function Testing() {
             }
         }
 
-        /*
-
-        return(toggle) ? (
-            <div className="popup">
-            <div className="popup-inner">
-                <button className="close-btn" onClick={() => setToggle(false)}>x</button>
-                
-                <h6>Do you want to do any changes to the keyword tags?</h6>
-                {k.map(kkk => (
-                    <li className="keys">
-                    <input
-                    className="checkbox-style"
-                    name="example_1"
-                    value={kkk}
-                    defaultChecked={checked}
-                    type="checkbox"
-                    onChange={e => {
-                        handleChecking(e); 
-                      }}/><label className="label">{kkk}</label>
-                    </li>
-                      ))}
-                <input placeholder={"Enter new keyword"} onChange={(e) => setNewK(e.target.value)}/><button onClick={(e) => addKeyword(newK)}>+</button>
-                
-                <button className="btn-send" onClick={(e) => UpdateBase(id,title,description,identifier,tempKeyword)}>Add</button>
-
-            </div>
-        </div>
-
-        ) : <button class="btn-newToggle" onClick={(e) =>setToggle(true)}>DB</button>
-        ;
-                 */
+       
     }
 
     
@@ -749,6 +866,7 @@ export default function Testing() {
     return (
          
         <div className="MainPage">
+            {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
             
             <f.Alert show={show} variant="danger" onClose={() => setShow(false)} dismissible> {/*Show alert when some1 tries to delete */}
         <f.Alert.Heading>Warning!</f.Alert.Heading>
@@ -779,7 +897,11 @@ export default function Testing() {
                 
             <p>Results found: {n.length}</p>
             <div className="wrapper">
-            <div className="box-memo"></div><p className="text-memo">Already exists in DB</p>
+            <div className="box-memo"></div><p className="text-memo">Already exists in DB&ensp;</p>
+            <div className="box-memo-blue"></div><p className="text-memo">Recommended by DB&ensp;</p>
+            <div className="box-memo-yellow"></div><p className="text-memo">Recommended by online repository&ensp;</p>
+            <div className="box-memo-black"></div><p className="text-memo">Recommended by both</p>
+            
             </div>
             
             <f.Table table table-bordered table-hover table-sm responsive> 

@@ -289,7 +289,7 @@ export default function GuestDashboard() {
     
     const DoSomething = async () => { //fetching data from external API 
         
-        const url = `http://snf-630087.vm.okeanos.grnet.gr:8888/SemanticMiddleware-1.2/results/?q=${ext}`;
+        const url = `http://snf-630087.vm.okeanos.grnet.gr:8888/SemanticMiddleware-1.3/results?q=${ext}&validate=true`;
         setLoadingFetched(true);
         await fetch(url)
             .then(res => res.text())
@@ -298,16 +298,38 @@ export default function GuestDashboard() {
                 const xmlDoc = parser.parseFromString(data,"text/xml");
                 
                 const base = xmlDoc.getElementsByTagName("owl:NamedIndividual");
-                for (let i = 0; i < base.length; i++) {
-                    const element = {
-                        id: base[i].getAttribute("rdf:ID"),
-                        title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
-                        description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
-                        identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
-                        keyword: base[i].getElementsByTagName("lom:keyword")[0].childNodes[0].nodeValue
-                    };
-                
-                    newposts.push(element);   
+                for (let i = 0; i< base.length; i++) {
+                    //TODO SCORES   
+                    let k =[];
+                    const result = base[i].hasAttribute("rdf:ID"); 
+                    if(result) {
+                        let match = false;
+                        let abort = true;
+                        for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
+                            if(posts[l].title == base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue
+                            && posts[l].description == base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue
+                            && posts[l].identifier == base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue) {
+                                match = true;
+                                abort = false;
+                            }  
+                        }
+
+                        const count = base[i].getElementsByTagName("lom:keyword");
+                        for (let j = 0; j < count.length; j++) { //get all keywords
+                            k.push(count[j].getElementsByTagName("rdfs:label")[0].childNodes[0].nodeValue);  
+                        }
+                        console.log(k);  
+                        const element = {
+                            id: base[i].getAttribute("rdf:ID"),
+                            title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
+                            description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
+                            identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
+                            keyword: k,
+                            exists: match    
+                        }; 
+                        newposts.push(element);
+                    } 
+                                   
                 }
                  
             })
@@ -332,7 +354,8 @@ export default function GuestDashboard() {
                 <ul>
             {arr.map(item => {
                 
-                return <li>{item}</li> //takes the item as param, in order to delete it
+                return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+ 
             })}
         </ul>
                
@@ -433,7 +456,7 @@ export default function GuestDashboard() {
                     <td>{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
                     <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
-                    <td>{post.keyword}</td>
+                    <td><ShowKeywords children={post}></ShowKeywords></td>
                         
                     
                     
