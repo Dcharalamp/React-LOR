@@ -109,42 +109,82 @@ export default function Testing() {
     const [doubleSearch,setDoubleSearch] = useState([]); //results for double searching criteria
     const [keywordRes,setKeywordRes] = useState([]); //states for 2->1  searching critiria handling
     const [idRes,setIdRes] = useState([]);
+
+    //states for 2->1 searching criteria for fetched data
+    const [titleIsSearching, setTitleIsSearching] = useState(false); //flag for double search
+    const [exKeywordisSearching, setExKeywordisSearching] = useState(false);//flag for double search
+    const [exDoubleSearch,setExDoubleSearch] = useState([]); //results for double searching criteria
+    const [exKeywordRes,setExKeywordRes] = useState([]); //states for 2->1  searching critiria handling
+    const [titleRes,setTitleRes] = useState([]);
+
+
     
 
 
     const exUpdateInput = async (input) => { 
         
         if(input){
-            let x = [];
+            setExKeywordisSearching(true);
+            if(!titleIsSearching){ //nothing on title searchBar
+
+            
             
             const filtered = nn.filter(post => { 
-                 return post.keyword[0].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                 return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
     
             })
+            setExKeywordRes(filtered);
+            setExDoubleSearch(filtered);
             setN(filtered); //update state  
             setExCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
-            }
-            else{        
-                setN(nn); //no search, means show all objects
-                
+        }else{
+            const filtered = exDoubleSearch.filter(post => { //filter posts based on input of searchbar
+                    
+    
+                return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+               
+           })
+           setN(filtered);
+        }
+        }
+            else{  
+                setExKeywordisSearching(false);
+                if(!titleIsSearching){      
+                    setN(nn); //no search, means show all objects
+                }else{
+                    setN(titleRes);
+                }
             }
          }
 
          const exUpdateInput2 = async (input) => {
-             console.log("hi");
-        
             if(input){
-                let x = [];
+               setTitleIsSearching(true);
+               if(!exKeywordisSearching){
                 
                 const filtered = nn.filter(post => { 
                      return post.title.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
         
                 })
+                setTitleRes(filtered);
+                setExDoubleSearch(filtered);
                 setN(filtered); //update state  
                 setExCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
+            }else{
+                const filtered = exDoubleSearch.filter(post => { //filter posts based on input of searchbar
+                    return post.title.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                })
+                
+                setN(filtered);
+            }
                 }
-                else{        
+                else{ 
+                    setTitleIsSearching(false);
+                    if(!exKeywordisSearching){       
                     setN(nn); //no search, means show all objects
+                    }else{
+                        setN(exKeywordRes);
+                    }
                     
                 }
              }
@@ -152,38 +192,28 @@ export default function Testing() {
     const updateInput = async (input) => {
         
         if(input){
-            let x = [];
+            
             setKeywordisSearching(true);
             if(!idisSearching) { //nothing on ID searchBar
+                
             const filtered = posts.filter(post => { //filter posts based on input of searchbar
                 
-                for (let index = 0; index < post.keyword.length; index++) {
-                    
-                    if(post.keyword[index].toLowerCase === input.toLowerCase){
-                        
-
-                         return post.keyword[index].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
-                        
-                    }
-                }
-                return false;
-             
-            })
+                return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //toString otherwise error cuz of how keyword is built
+         
+            });
+            
+            
             setKeywordRes(filtered);
             setDoubleSearch(filtered); //for the double searching case
             setPostsNotDefault(filtered); //update state  
             setCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
             } else {
                 const filtered = doubleSearch.filter(post => { //filter posts based on input of searchbar
-                    for (let index = 0; index < post.keyword.length; index++) {
-                        
-                        if(post.keyword[index].toLowerCase === input.toLowerCase){
-                            
+                    
     
-                             return post.keyword[index].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                             return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
                             
-                        }
-                    }    })
+                        })
                 setPostsNotDefault(filtered);
                 
                 
@@ -357,10 +387,10 @@ export default function Testing() {
                                 score.push(parseFloat(count[j].getElementsByTagName("score")[0].childNodes[0].nodeValue, 10));
                             }
                             k.push(count[j].getElementsByTagName("label")[0].childNodes[0].nodeValue);  
-                            console.log(score[j]);
+                            
                             
                         }
-                        console.log(k);  
+                       
                         const element = {
                             id: base[i].getAttribute("rdf:ID"),
                             title: base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue,
@@ -975,7 +1005,7 @@ export default function Testing() {
             
             <thead>
                 <tr>
-                    <th scope="col" background-color="blue" >id</th>
+                    <th scope="col" >id</th>
                     <th scope="col" >title</th>
                     <th scope="col" >description</th>
                     <th scope="col" >identifier</th>

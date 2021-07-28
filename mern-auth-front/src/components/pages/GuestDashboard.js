@@ -82,41 +82,81 @@ export default function GuestDashboard() {
     const [doubleSearch,setDoubleSearch] = useState([]); //results for double searching criteria
     const [keywordRes,setKeywordRes] = useState([]); //states for 2->1  searching critiria handling
     const [idRes,setIdRes] = useState([]);
+
+
+    //states for 2->1 searching criteria for fetched data
+    const [titleIsSearching, setTitleIsSearching] = useState(false); //flag for double search
+    const [exKeywordisSearching, setExKeywordisSearching] = useState(false);//flag for double search
+    const [exDoubleSearch,setExDoubleSearch] = useState([]); //results for double searching criteria
+    const [exKeywordRes,setExKeywordRes] = useState([]); //states for 2->1  searching critiria handling
+    const [titleRes,setTitleRes] = useState([]);
     
 
 
     const exUpdateInput = async (input) => { 
         
         if(input){
-            let x = [];
+            setExKeywordisSearching(true);
+            if(!titleIsSearching){ //nothing on title searchBar
+
+            
             
             const filtered = nn.filter(post => { 
-                 return post.keyword.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                 return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
     
             })
+            setExKeywordRes(filtered);
+            setExDoubleSearch(filtered);
             setN(filtered); //update state  
             setExCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
-            }
-            else{        
-                setN(nn); //no search, means show all objects
-                
+        }else{
+            const filtered = exDoubleSearch.filter(post => { //filter posts based on input of searchbar
+                    
+    
+                return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+               
+           })
+           setN(filtered);
+        }
+        }
+            else{  
+                setExKeywordisSearching(false);
+                if(!titleIsSearching){      
+                    setN(nn); //no search, means show all objects
+                }else{
+                    setN(titleRes);
+                }
             }
          }
 
          const exUpdateInput2 = async (input) => {
-        
             if(input){
-                let x = [];
+               setTitleIsSearching(true);
+               if(!exKeywordisSearching){
                 
                 const filtered = nn.filter(post => { 
                      return post.title.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
         
                 })
+                setTitleRes(filtered);
+                setExDoubleSearch(filtered);
                 setN(filtered); //update state  
                 setExCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
+            }else{
+                const filtered = exDoubleSearch.filter(post => { //filter posts based on input of searchbar
+                    return post.title.toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                })
+                
+                setN(filtered);
+            }
                 }
-                else{        
+                else{ 
+                    setTitleIsSearching(false);
+                    if(!exKeywordisSearching){       
                     setN(nn); //no search, means show all objects
+                    }else{
+                        setN(exKeywordRes);
+                    }
                     
                 }
              }
@@ -124,38 +164,28 @@ export default function GuestDashboard() {
     const updateInput = async (input) => {
         
         if(input){
-            let x = [];
+            
             setKeywordisSearching(true);
             if(!idisSearching) { //nothing on ID searchBar
+                
             const filtered = posts.filter(post => { //filter posts based on input of searchbar
                 
-                for (let index = 0; index < post.keyword.length; index++) {
-                    
-                    if(post.keyword[index].toLowerCase === input.toLowerCase){
-                        
-
-                         return post.keyword[index].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
-                        
-                    }
-                }
-                return false;
-             
-            })
+                return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //toString otherwise error cuz of how keyword is built
+         
+            });
+            
+            
             setKeywordRes(filtered);
             setDoubleSearch(filtered); //for the double searching case
             setPostsNotDefault(filtered); //update state  
             setCurrentPage(1); //we go back to 1st page to prevent bad UI misconseptions
             } else {
                 const filtered = doubleSearch.filter(post => { //filter posts based on input of searchbar
-                    for (let index = 0; index < post.keyword.length; index++) {
-                        
-                        if(post.keyword[index].toLowerCase === input.toLowerCase){
-                            
+                    
     
-                             return post.keyword[index].toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
+                             return post.keyword.toString().toLowerCase().includes(input.toLowerCase()) //works for all typos, upper/lower case, all converted
                             
-                        }
-                    }    })
+                        })
                 setPostsNotDefault(filtered);
                 
                 
@@ -203,7 +233,6 @@ export default function GuestDashboard() {
         }
      }
   
-   
        
     
     //if you're not logged in, home page automatically redirects you to login page
@@ -300,33 +329,43 @@ export default function GuestDashboard() {
                 
                 const base = xmlDoc.getElementsByTagName("NamedIndividual");
                 for (let i = 0; i< base.length; i++) {
-                    //TODO SCORES   
+                    let score = [];
                     let k =[];
                     const result = base[i].hasAttribute("rdf:ID"); 
                     if(result) {
                         let match = false;
                         let abort = true;
+                        let indexOfDupePost = -1;
                         for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
                             if(posts[l].title == base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
                             && posts[l].description == base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
                             && posts[l].identifier == base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
                                 match = true;
+                                indexOfDupePost = l;
                                 abort = false;
                             }  
                         }
 
                         const count = base[i].getElementsByTagName("keyword");
                         for (let j = 0; j < count.length; j++) { //get all keywords
-                            k.push(count[j].getElementsByTagName("rdfs:label")[0].childNodes[0].nodeValue);  
+                            if(count[j].getElementsByTagName("score").length === 0){ //if score element doesnt exist, we assume its 0
+                                score.push(null);
+                            }else{
+                                score.push(parseFloat(count[j].getElementsByTagName("score")[0].childNodes[0].nodeValue, 10));
+                            }
+                            k.push(count[j].getElementsByTagName("label")[0].childNodes[0].nodeValue);  
                         }
-                        console.log(k);  
+                         
                         const element = {
                             id: base[i].getAttribute("rdf:ID"),
                             title: base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue,
                             description: base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue,
                             identifier: base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue,
                             keyword: k,
-                            exists: match    
+                            scores:score,
+                            exists: match,   
+                            dupeIndex: indexOfDupePost
+
                         }; 
                         newposts.push(element);
                     } 
@@ -362,6 +401,116 @@ export default function GuestDashboard() {
                
             );
           
+          
+        
+    }
+
+
+    function ExShowKeywords({children}) { //show keywords
+        const givenKeys = children.keyword;
+        const givenScores = children.scores;
+        const times = givenKeys.length;
+        let dupek = [];
+        let doublek = [];
+        if(children.dupeIndex > 0){
+            const keywordsFromDB = posts[children.dupeIndex].keyword;
+            for (let index = 0; index < keywordsFromDB.length; index++) {
+                dupek.push(keywordsFromDB[index]);
+                
+            }
+        }
+        
+        let arr = [];
+        let arrI = [];
+
+        
+        
+        for (let index = 0; index < times; index++) {
+            arr.push(givenKeys[index]); 
+            arrI.push(givenKeys[index]); //initial, helps for cases
+            
+        }
+        arrI = arrI.filter((e) => !dupek.includes(e)); // Ǝ Okeano, !Ǝ DB
+        doublek = dupek.filter((e) => arr.includes(e));// Ǝ Okeano & Ǝ DB
+        dupek = dupek.filter((e) => !arr.includes(e)); // Ǝ DB, !Ǝ Okeano
+
+            if(children.dupeIndex < 0 ){
+            return( 
+                <ul>
+            {arrI.map((item,index) => {
+                if(givenScores[index] !== null) {
+                return(
+                    <>
+                    
+                    <li><div className="wrapper" ><div className="arrow-left"></div><span className="label2" >{item}</span></div></li> 
+                    <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                    </>
+
+                );
+                }else{
+                    return(
+                        <>
+                        
+                        <li><div className="wrapper" ><div className="arrow-left"></div><span className="label2" >{item}</span></div></li> 
+                        </>
+    
+                    );
+
+                }             })}
+        </ul>
+               
+            );}
+            else{
+                return( 
+                    <>
+                    <ul>
+                {arrI.map((item,index) => {
+                    if(givenScores[index] !== null){
+                    
+                    return(
+                        <>
+                         <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+                         <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                         </>
+                         );
+                    }else{
+                        return(
+                            <>
+                             <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+                             </>
+                             );
+
+                    }
+                        })}
+            </ul>
+            <ul>
+                {dupek.map(item =>{
+                    return <li><div className="wrapper"><div className="arrow-left2"></div><span className="label3">{item}</span></div></li>
+                })}
+            </ul>
+            <ul>
+                {doublek.map((item,index) =>{
+                    if(givenScores[index] !== null){
+                    return(
+                        <>
+                        <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
+                        <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                        </>
+                        );
+                    }else{
+                        return(
+                            <>
+                            <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
+                            </>
+                            );
+
+                    }
+                    })}
+            </ul>
+            </>
+                   
+                );
+            }
           
         
     }
@@ -425,6 +574,13 @@ export default function GuestDashboard() {
             </div>
             <div className="newMain" hidden={p}>
             <p>Results found: {n.length}</p>
+            <div className="wrapper">
+            <div className="box-memo"></div><p className="text-memo">Already exists in DB&ensp;</p>
+            <div className="box-memo-blue"></div><p className="text-memo">Recommended by DB&ensp;</p>
+            <div className="box-memo-yellow"></div><p className="text-memo">Recommended by online repository&ensp;</p>
+            <div className="box-memo-black"></div><p className="text-memo">Recommended by both</p>
+            
+            </div>
             <f.Table table table-bordered table-hover table-sm responsive> 
             
             <thead>
@@ -451,13 +607,13 @@ export default function GuestDashboard() {
                 
                 
                 
-                <tr> 
+                <tr style={post.exists ? {background:"#50C878"}: {}}> 
                       
                     <td >{post.id}</td>
-                    <td>{post.title}</td>
+                    <td style={post.exists ? {background:"#50C878"} : {background:"#F6F6F6"}}>{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
-                    <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
-                    <td><ShowKeywords children={post}></ShowKeywords></td>
+                    <td style={post.exists ? {background:"#50C878"} : {background:"#F6F6F6"}}><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
+                    <td><ExShowKeywords children={post}></ExShowKeywords></td>
                         
                     
                     
@@ -535,9 +691,9 @@ export default function GuestDashboard() {
                 <tr> {/*display the fetched data in corresponding table position */}
                       
                     <td >{post.id}</td> {/*ID doesnt get editable, cuz its a unique param and doesnt change */}
-                    <td>{post.title}</td>
+                    <td className="alt-col">{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
-                    <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
+                    <td className="alt-col"><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
                     <td><ShowKeywords children={post}></ShowKeywords>
                 
                         
