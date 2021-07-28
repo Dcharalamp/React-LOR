@@ -446,6 +446,11 @@ input[type="text"]
 
 }
 
+.popup-hover {
+    font-size: 13px;
+}
+
+
 .wrapper {
     display: flex;
     justify-content: flex-start;
@@ -459,6 +464,10 @@ input[type="text"]
     list-style-type: none; /*remove bullets from li*/
 }
 
+.alt-col {
+    background-color: #f6f6f6;
+}
+
 .tableHead { /* If needed for column titles to be aligned*/
     text-align: center;
 }
@@ -470,6 +479,16 @@ input[type="text"]
 
 .form input {
     margin-bottom: 1rem;
+}
+
+.about-page{
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    padding: 17px;
+    position: absolute;
+   
+    background-color: white;
 }
 
 .sorting_buttons {

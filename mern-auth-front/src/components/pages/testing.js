@@ -327,39 +327,47 @@ export default function Testing() {
         await fetch(url)
             .then(res => res.text())
             .then(data => {
+                const newdata = data.replace(/<(\/?)([^:>\s]*:)?([^>]+)>/g, "<$1$3>"); //drop unwanted XML namespaces
                 const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data,"text/xml");
-                
-                const base = xmlDoc.getElementsByTagName("owl:NamedIndividual");
-                for (let i = 0; i< base.length; i++) {
-                    //TODO SCORES   
+                const xmlDoc = parser.parseFromString(newdata,"text/xml");
+                const base = xmlDoc.getElementsByTagName("NamedIndividual");
+                for (let i = 0; i< base.length; i++) {  
                     let k =[];
+                    let score = [];
                     const result = base[i].hasAttribute("rdf:ID"); 
                     if(result) {
                         let match = false;
                         let abort = true;
                         let indexOfDupePost = -1;
                         for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
-                            if(posts[l].title == base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue
-                            && posts[l].description == base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue
-                            && posts[l].identifier == base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue) {
+                            if(posts[l].title == base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
+                            && posts[l].description == base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
+                            && posts[l].identifier == base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
                                 match = true;
                                 indexOfDupePost = l; //index of dupe post
                                 abort = false;
                             }  
                         }
 
-                        const count = base[i].getElementsByTagName("lom:keyword");
+                        const count = base[i].getElementsByTagName("keyword");
                         for (let j = 0; j < count.length; j++) { //get all keywords
-                            k.push(count[j].getElementsByTagName("rdfs:label")[0].childNodes[0].nodeValue);  
+                            if(count[j].getElementsByTagName("score").length === 0){ //if score element doesnt exist, we assume its 0
+                                score.push(null);
+                            }else{
+                                score.push(parseFloat(count[j].getElementsByTagName("score")[0].childNodes[0].nodeValue, 10));
+                            }
+                            k.push(count[j].getElementsByTagName("label")[0].childNodes[0].nodeValue);  
+                            console.log(score[j]);
+                            
                         }
                         console.log(k);  
                         const element = {
                             id: base[i].getAttribute("rdf:ID"),
-                            title: base[i].getElementsByTagName("lom:title")[0].childNodes[0].nodeValue,
-                            description: base[i].getElementsByTagName("lom:description")[0].childNodes[0].nodeValue,
-                            identifier: base[i].getElementsByTagName("lom:identifier")[0].childNodes[0].nodeValue,
+                            title: base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue,
+                            description: base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue,
+                            identifier: base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue,
                             keyword: k,
+                            scores: score,
                             exists: match,
                             dupeIndex: indexOfDupePost    
                         }; 
@@ -492,6 +500,7 @@ export default function Testing() {
 
     function ExShowKeywords({children}) { //show keywords
         const givenKeys = children.keyword;
+        const givenScores = children.scores;
         const times = givenKeys.length;
         let dupek = [];
         let doublek = [];
@@ -505,6 +514,19 @@ export default function Testing() {
         
         let arr = [];
         let arrI = [];
+
+        /*const mouseIn = (e) => {
+            e.target.style.background = "red";
+            setVisible(false);
+
+        }
+
+        const mouseOut = (e) => {
+            e.target.style.background = "yellow";
+            setVisible(true);
+
+        }
+        */
         
         for (let index = 0; index < times; index++) {
             arr.push(givenKeys[index]); 
@@ -518,10 +540,26 @@ export default function Testing() {
             if(children.dupeIndex < 0 ){
             return( 
                 <ul>
-            {arrI.map(item => {
-                
-                return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
-            })}
+            {arrI.map((item,index) => {
+                if(givenScores[index] !== null) {
+                return(
+                    <>
+                    
+                    <li><div className="wrapper" ><div className="arrow-left"></div><span className="label2" >{item}</span></div></li> 
+                    <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                    </>
+
+                );
+                }else{
+                    return(
+                        <>
+                        
+                        <li><div className="wrapper" ><div className="arrow-left"></div><span className="label2" >{item}</span></div></li> 
+                        </>
+    
+                    );
+
+                }             })}
         </ul>
                
             );}
@@ -529,10 +567,24 @@ export default function Testing() {
                 return( 
                     <>
                     <ul>
-                {arrI.map(item => {
+                {arrI.map((item,index) => {
+                    if(givenScores[index] !== null){
                     
-                    return <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
-                })}
+                    return(
+                        <>
+                         <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+                         <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                         </>
+                         );
+                    }else{
+                        return(
+                            <>
+                             <li><div className="wrapper"><div className="arrow-left"></div><span className="label2">{item}</span></div></li> 
+                             </>
+                             );
+
+                    }
+                        })}
             </ul>
             <ul>
                 {dupek.map(item =>{
@@ -540,9 +592,23 @@ export default function Testing() {
                 })}
             </ul>
             <ul>
-                {doublek.map(item =>{
-                    return <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
-                })}
+                {doublek.map((item,index) =>{
+                    if(givenScores[index] !== null){
+                    return(
+                        <>
+                        <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
+                        <p  className="popup-hover"><i>Score: {givenScores[index]*100}%</i></p>
+                        </>
+                        );
+                    }else{
+                        return(
+                            <>
+                            <li><div className="wrapper"><div className="arrow-left3"></div><span className="label4">{item}</span></div></li>
+                            </>
+                            );
+
+                    }
+                    })}
             </ul>
             </>
                    
@@ -800,6 +866,7 @@ export default function Testing() {
                 <div className="popup-inner">
                     <button className="close-btn" onClick={() => setT(false)}>x</button>
                     <h3>Update fields</h3>
+                    
                     <f.Table table table-bordered table-hover table-sm responsive > 
                 <tr>
                             <td>Title</td>
@@ -908,7 +975,7 @@ export default function Testing() {
             
             <thead>
                 <tr>
-                    <th scope="col" >id</th>
+                    <th scope="col" background-color="blue" >id</th>
                     <th scope="col" >title</th>
                     <th scope="col" >description</th>
                     <th scope="col" >identifier</th>
@@ -932,13 +999,13 @@ export default function Testing() {
                 
                 <tr style={post.exists ? {background:"#50C878"}: {}}> 
                       
-                    <td >{post.id}</td>
-                    <td>{post.title}</td>
+                    <td>{post.id}</td>
+                    <td style={post.exists ? {background:"#50C878"} : {background:"#F6F6F6"}}>{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
-                    <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
+                    <td style={post.exists ? {background:"#50C878"} : {background:"#F6F6F6"}}><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
                     <td><ExShowKeywords children={post}></ExShowKeywords></td>
                         
-                    <td style={OptionStyling}>
+                    <td style={OptionStyling} style={post.exists ? {background:"#50C878"} : {background:"#F6F6F6"}}>
                         <div className="options">
                             <AddToBase par={post}></AddToBase>
                         </div>
@@ -988,7 +1055,7 @@ export default function Testing() {
             
             <thead>
                 <tr>
-                    <th scope="col" >id     
+                    <th scope="col">id     
                         <button className="sorting_buttons"><i class="fa fa-sort-desc" onClick={(e) =>sortDataAsc('id')}></i></button>
                         <button className="sorting_buttons"><i class="fa fa-sort-asc" onClick={(e) => sortDataDesc('id')}></i></button></th>
                     <th scope="col" >title</th>
@@ -1017,17 +1084,17 @@ export default function Testing() {
                 
                 <tr> {/*display the fetched data in corresponding table position */}
                       
-                    <td >{post.id}</td> {/*ID doesnt get editable, cuz its a unique param and doesnt change */}
-                    <td>{post.title}</td>
+                    <td>{post.id}</td> {/*ID doesnt get editable, cuz its a unique param and doesnt change */}
+                    <td className="alt-col">{post.title}</td>
                     <td><ShowMore>{post.description}</ShowMore></td>
-                    <td><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
+                    <td className="alt-col"><a href={post.identifier} target="_blank"  rel="noopener noreferrer">{post.identifier}</a></td>
                     <td><ShowKeywords children={post}></ShowKeywords>
                 
                         <ToggleCrosshair params={post}>+</ToggleCrosshair>
                         
                         </td>
                         
-                    <td style={OptionStyling}>
+                    <td style={OptionStyling} className="alt-col">
                         <div className="options">
                         <button class="btn" onClick={(e) => OpenAlert(post._id)}><i class="fa fa-trash"></i></button>{/*needs center alignment. Opens alert popup window */}
                          <Popup k={post}></Popup>

@@ -10,7 +10,7 @@ export default function Header() {
     if(!userData.user){
         return (
             <header id="header">
-                <Link to="/login" style={{textDecoration:'none'}}><h1 className="title">Ψηφιακή Βιβλιοθήκη Μαθησιακών Αντικειμένων</h1></Link>
+                <Link to="/login" style={{textDecoration:'none'}}><h1 className="title">Learning Objects' Digital Library</h1></Link>
                 <AuthOptions/>
             </header>
         )
@@ -19,7 +19,7 @@ export default function Header() {
             return (
         
                 <header id="header">
-                    <Link to="/" style={{textDecoration:'none'}}><h1 className="title">Ψηφιακή Βιβλιοθήκη Μαθησιακών Αντικειμένων</h1></Link>
+                    <Link to="/" style={{textDecoration:'none'}}><h1 className="title">Learning Objects' Digital Library</h1></Link>
                     <AuthOptions/>
                 </header>
             )
@@ -27,7 +27,7 @@ export default function Header() {
             return (
         
                 <header id="header">
-                    <Link to="/user-dash" style={{textDecoration:'none'}}><h1 className="title">Ψηφιακή Βιβλιοθήκη Μαθησιακών Αντικειμένων</h1></Link>
+                    <Link to="/user-dash" style={{textDecoration:'none'}}><h1 className="title">Learning Objects' Digital Library</h1></Link>
                     <AuthOptions/>
                 </header>
             )

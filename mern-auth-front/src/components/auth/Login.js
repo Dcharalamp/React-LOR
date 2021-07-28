@@ -34,7 +34,7 @@ export default function Login() {
 
     return (
         <div className="page">
-            <h2><i>Σύνδεση χρήστη</i></h2>
+            <h2><i>Log in:</i></h2>
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
             <form className="form" onSubmit={submit}>
                 <label htmlFor="login-email">Email:</label>
@@ -42,7 +42,7 @@ export default function Login() {
                 <i class="fa fa-envelope fa-2x"></i>
                 <input id="login-email" type="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} /> {/*on change event, dld when u get a new email in input form, setEmail on the new value */}
                 </div>
-                <label htmlFor="login-password">Κωδικός πρόσβασης:</label>
+                <label htmlFor="login-password">Password:</label>
                 <div className="form-items">
                 <i class="fa fa-key fa-2x"></i>
                 <input id="login-password" type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />

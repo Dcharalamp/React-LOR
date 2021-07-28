@@ -42,7 +42,7 @@ export default function Register() {
 
     return (
         <div className="page">
-            <h2>Εγγραφή χρήστη</h2>
+            <h2>Registration</h2>
             {/*if there's an error show the error and make error state undefined */}
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
             <form className="form" onSubmit={submit}>
@@ -51,13 +51,13 @@ export default function Register() {
                 <i class="fa fa-envelope fa-2x"></i>
                 <input id="register-email" type="email" onChange={(e) => setEmail(e.target.value)} /> {/*on change event, dld when u get a new email in input form, setEmail on the new value */}
                 </div>
-                <label htmlFor="register-password">Κωδικός πρόσβασης:</label>
+                <label htmlFor="register-password">Password:</label>
                 <div className="form-items">
                 <i class="fa fa-key fa-2x"></i>
                 <input id="register-password" type="password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <input type="password" placeholder="Verify Password" onChange={(e) => setPasswordCheck(e.target.value)}/>
-                <label htmlFor="register-display-name">Όνομα χρήστη:</label>
+                <label htmlFor="register-display-name">Username:</label>
                 <div className="form-items">
                 <i class="fa fa-user fa-2x"></i>
                 <input id="register-display-name" type="text" onChange={(e) => setDisplayName(e.target.value)} />

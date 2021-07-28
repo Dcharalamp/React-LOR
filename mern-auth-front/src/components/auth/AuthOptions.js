@@ -13,6 +13,7 @@ export default function AuthOptions() {
 
     const register = () => history.push("/register");
     const login = () => history.push("/login");
+    const about = () => history.push("/about");
     const logout = () => { //when we click the logout button, user and token goes back to undefined
         setUserData({
             token: undefined,
@@ -28,14 +29,16 @@ export default function AuthOptions() {
             { //conditional rendering of buttons, if we have a logged in user(if userData exists) then we render only logout button, otherwise the other 2
                 userData.user ? (
                 <>
+                <button onClick={about}>About</button>
                 <i class="fa fa-user fa-2x" style={imageStyle}></i>
                 <h5>{userData.user.displayName}</h5>
-                <button onClick={logout}>Αποσύνδεση</button>
+                <button onClick={logout}>Logout</button>
                 </> ) : (
             <>
-
-            <button onClick={register}>Εγγραφή</button>
-            <button onClick={login}>Είσοδος</button>
+            <button onClick={about}>About</button>
+            <button onClick={register}>Sign in</button>
+            <button onClick={login}>Login</button>
+            
             </>
             )}
         </nav>
