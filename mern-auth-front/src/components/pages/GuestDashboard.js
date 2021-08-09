@@ -18,7 +18,6 @@ export default function GuestDashboard() {
     const [postsPerPage, setPostsPerPage] = useState(5); //5 samples per page 
     const [keyword, setKeyword] = useState();
     const [postsNotDefault, setPostsNotDefault] = useState([]); //commonly updated to suit every feature's needs
-    const [error, setError] = useState(); //error handling
     const [ext,setExt] = useState(''); //external API requests from Okeanos
     const [n,setN] = useState([]); //the results of the fetched API
     const [nn, setNN] = useState([]); //helper for searching
@@ -337,9 +336,9 @@ export default function GuestDashboard() {
                         let abort = true;
                         let indexOfDupePost = -1;
                         for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
-                            if(posts[l].title == base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
-                            && posts[l].description == base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
-                            && posts[l].identifier == base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
+                            if(posts[l].title === base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
+                            && posts[l].description === base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
+                            && posts[l].identifier === base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
                                 match = true;
                                 indexOfDupePost = l;
                                 abort = false;

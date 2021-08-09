@@ -92,8 +92,8 @@ export default function Testing() {
         const res = await axios.delete("http://localhost:5000/ont/ontologyRemove/", {
             params: { _id: postToBeRemoved }, headers:{ "to-be-removed" : postToBeRemoved}});
 
+        console.log(res);
         const postsLeft = posts.filter(item => item._id !== postToBeRemoved);
-        console.log(postsLeft);
         setPosts(postsLeft);
         // delete can concurrently work with sort+search and render the correct things
         const postsLeftToShown = postsNotDefault.filter(item => item._id !== postToBeRemoved); 
@@ -370,9 +370,9 @@ export default function Testing() {
                         let abort = true;
                         let indexOfDupePost = -1;
                         for (let l = 0; l < posts.length && abort; l++) { //check for dupes in DB
-                            if(posts[l].title == base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
-                            && posts[l].description == base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
-                            && posts[l].identifier == base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
+                            if(posts[l].title === base[i].getElementsByTagName("title")[0].childNodes[0].nodeValue
+                            && posts[l].description === base[i].getElementsByTagName("description")[0].childNodes[0].nodeValue
+                            && posts[l].identifier === base[i].getElementsByTagName("identifier")[0].childNodes[0].nodeValue) {
                                 match = true;
                                 indexOfDupePost = l; //index of dupe post
                                 abort = false;
@@ -409,7 +409,6 @@ export default function Testing() {
             })
             .catch(err => console.log(err));
         setLoadingFetched(false);
-        console.log(newposts);
         setN(newposts); //state that holds the queries responded
         setNN(newposts);
         setP(false); //show table
@@ -430,8 +429,6 @@ export default function Testing() {
         }
 
         const insertGivenKey = async (givenID, givenTitle, givenDescription, givenIdentifier, givenKeys, item, currentPage) => {
-            console.log(item);
-            console.log(givenKeys);
             
             givenKeys.splice(givenKeys.length,0, item); //add the new keyword
             console.log(givenKeys);
@@ -445,7 +442,7 @@ export default function Testing() {
                         keyword: givenKeys
     
                     }, );
-                
+            console.log(res);    
             } 
             catch(err) { //if there's an error we catch it
             err.response.data.msg && setError(err.response.data.msg); //if both are true, error state is update with the error message that shows up
@@ -485,7 +482,7 @@ export default function Testing() {
             let position = 0; //index of keyword we want to delete
             console.log(givenKeys);
             for (let index = 0; index < givenKeys.length; index++) { //find the correct index
-                if(givenKeys[index] == item)    {
+                if(givenKeys[index] === item)    {
                     position = index;
                     break;
                 }    
@@ -503,7 +500,7 @@ export default function Testing() {
                         keyword: givenKeys
     
                     }, );
-                
+            console.log(res);    
             } 
             catch(err) { //if there's an error we catch it
             err.response.data.msg && setError(err.response.data.msg); //if both are true, error state is update with the error message that shows up
@@ -545,18 +542,7 @@ export default function Testing() {
         let arr = [];
         let arrI = [];
 
-        /*const mouseIn = (e) => {
-            e.target.style.background = "red";
-            setVisible(false);
-
-        }
-
-        const mouseOut = (e) => {
-            e.target.style.background = "yellow";
-            setVisible(true);
-
-        }
-        */
+       
         
         for (let index = 0; index < times; index++) {
             arr.push(givenKeys[index]); 
@@ -651,13 +637,11 @@ export default function Testing() {
     function AddToBase({par}) {
         const [toggle,setToggle] = useState(false);
         const id = par.id;
-        const [keyword,setKeyword] = useState([par.keyword]);
         const [k,setK] = useState(par.keyword.toString().split(","));
         const [tempKeyword,setTempKeyword] = useState(k); //helper state
         const title = par.title;
         const description = par.description;
         const identifier = par.identifier;
-        const newOntology = {id, title, description, identifier, keyword};
         const [checked,setChecked] = useState(true);
         const [newK, setNewK] = useState('');
         //in case of dupe object
@@ -694,7 +678,7 @@ export default function Testing() {
             setPostsNotDefault(postsNotDefault.concat(newOntology));
             let abort=true;
             for (let i = 0; i < nn.length && abort; i++) {
-                if(n[i].id== id){
+                if(n[i].id === id){
                     n[i].exists = true;
                     nn[i].exists = true;
                     abort = false;
@@ -726,7 +710,7 @@ export default function Testing() {
     
                     }, );
                
-                
+            console.log(res);   
             } 
             catch(err) { //if there's an error we catch it
             err.response.data.msg && setError(err.response.data.msg); //if both are true, error state is update with the error message that shows up
@@ -879,7 +863,7 @@ export default function Testing() {
     
                     }, );
                
-                
+            console.log(res);    
             } 
             catch(err) { //if there's an error we catch it
             err.response.data.msg && setError(err.response.data.msg); //if both are true, error state is update with the error message that shows up
@@ -961,7 +945,7 @@ export default function Testing() {
     
     
     return (
-         
+        
         <div className="MainPage">
             {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}
             

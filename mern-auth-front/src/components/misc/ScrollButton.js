@@ -5,7 +5,6 @@ export default function ScrollButton() {
   
         const [visible, setVisible] = useState(false)
 
-        const imgStyle = {color: "white"};
         
         const toggleVisible = () => {
           const scrolled = document.documentElement.scrollTop;

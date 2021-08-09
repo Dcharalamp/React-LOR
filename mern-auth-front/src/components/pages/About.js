@@ -1,21 +1,11 @@
-import React, {useState,useContext} from "react";
-import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import React from "react";
+
 import {Link} from "react-router-dom";
 
 
 
 
 export default function About() {
-    const {userData, setUserData} = useContext(UserContext);
-    const history = useHistory();
-    const tempStyling = {color:"white"};
-
-
-
-
-
-
 
     return(
        <div className="about-page">

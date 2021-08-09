@@ -10,7 +10,6 @@ import Register from "./components/auth/Register";
 import Header from "./components/layout/Header";
 import UserContext from "./context/UserContext";
 import OntRegister from "./components/pages/OntRegister";
-import AuthDelete from "./components/auth/AuthDelete";
 import Testing from "./components/pages/testing";
 import GuestDashboard from "./components/pages/GuestDashboard";
 import About from "./components/pages/About";
@@ -62,7 +61,6 @@ export default function App() { //this app react function component(rfc) returns
                <Route path="/register" component={Register} />
                <Route path="/ontregister" component={OntRegister}/>
                <Route path="/about" component={About}/>
-               <Route path="/ontdelete" component={AuthDelete}/>
             </Switch>
             </div>
         </UserContext.Provider>

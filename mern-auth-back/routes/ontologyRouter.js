@@ -21,7 +21,7 @@ router.post("/ontologySubmit", async (req,res) => {
             ]
             }); 
         if(existingOntology)
-            return res.status(400).json({msg: "Ontology Already exists in DB"});
+            return res.status(400).json({msg: "Object Already exists in DB"});
 
         
         //create ontology based on ontology model
