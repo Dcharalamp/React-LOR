@@ -1002,8 +1002,8 @@ export default function Testing() {
             <tbody>
                 <tr>
                 <th></th>
-                <input style={BarStyling} key="random2" value={keyword} placeholder={"search Title"} onChange={(e) => exUpdateInput2(e.target.value)}/>
-                <th></th>
+                <th><input style={BarStyling} key="random2" value={keyword} placeholder={"search Title"} onChange={(e) => exUpdateInput2(e.target.value)}/></th>
+                <input style={BarStyling} key="random2" value={keyword} placeholder={"search Description"}/>               
                 <th></th>
                 <input style={BarStyling} key="random1" value={keyword} placeholder={"search keyword"} onChange={(e) => exUpdateInput(e.target.value)}/>
                 </tr> 

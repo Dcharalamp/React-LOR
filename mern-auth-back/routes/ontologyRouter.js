@@ -16,14 +16,15 @@ router.post("/ontologySubmit", async (req,res) => {
         
         const existingOntology = await Ontology.findOne({
             $and:[
-                {identifier: identifier},
-                {keyword: keyword}
+                {title: title},
+                {description: description},
+                {identifier: identifier}    
             ]
             }); 
-        if(existingOntology)
-            return res.status(400).json({msg: "Object Already exists in DB"});
+        if(existingOntology){
+            return res.status(400).json({msg: `Object Already exists in DB. Keywords in DB: ${existingOntology.keyword}`});
 
-        
+        }else{
         //create ontology based on ontology model
         const newOntology = new Ontology ({
             id,
@@ -35,7 +36,7 @@ router.post("/ontologySubmit", async (req,res) => {
         //save new ontology
         const savedOntology = await newOntology.save();
         res.json(savedOntology);
-
+    }
     } catch(err){
         res.status(500).json({error: err.message});
         
@@ -83,6 +84,30 @@ router.put("/ontologyUpdate", async(req,res) => {
     }
 });
 
+router.post("/duplicateObj", async(req,res) => {
+    let {title,description,identifier} = req.body;
+
+    const existingOntology = await Ontology.findOne({
+        $and:[
+            {title: title},
+            {description: description},
+            {identifier: identifier}    
+        ]
+        }); 
+    if(existingOntology){
+        return res.json({
+            duped: true,
+            
+        });
+
+    }else{
+        return res.json({
+            duped: false
+        });
+    }
+
+
+});
 
 router.get("/ontologyList", async(req,res) => { //fetch all data from Ontologies
     try {
