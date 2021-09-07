@@ -1,4 +1,6 @@
 # React-LOR
+Demo of the application: https://stormy-wildwood-54085.herokuapp.com/
+
 Web application for managing and displaying Learning Objects and their metadata.
 
 App created using the MERN stack, has 2 user levels(admin and guest) and covers all CRUD Operations
